@@ -1,0 +1,23 @@
+//font
+
+$font-stack: 'Roboto', sans-serif;
+ 
+
+// font weights
+$font-light: 300;
+$font-normal: 400;
+$font-bold: 700;
+$font-black: 900;
+
+
+
+//font mixin
+
+@mixin font($weight) {
+    font-family: $font-stack;
+    font-weight: $weight;
+}
+
+html {
+    font-family: $font-stack;
+}
