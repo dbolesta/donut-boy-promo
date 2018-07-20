@@ -2,6 +2,8 @@ const gulp         = require('gulp');
 const browserSync  = require('browser-sync').create();
 const sass         = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
+const concat       = require('gulp-concat');
+const imagemin     = require('gulp-imagemin');
 
 // Compile Sass & Inject Into Browser
 gulp.task('sass', function() {
@@ -21,6 +23,26 @@ gulp.task('copyHtml', function(){
     gulp.src('src/*.html')
         .pipe(gulp.dest('dist'));
 });
+
+// concat scrips
+gulp.task('vendorScripts', function() {
+  gulp.src('src/js/vendor/*.js')
+    .pipe(concat('vendorScripts.js'))
+    .pipe(gulp.dest('dist/js'));
+});
+gulp.task('scripts', function() {
+  gulp.src('src/js/scripts.js')
+    .pipe(concat('scripts.js'))
+    .pipe(gulp.dest('dist/js'));
+});
+
+// compress images
+gulp.task('imageMin', () =>
+	gulp.src('src/imgs/*')
+		.pipe(imagemin())
+		.pipe(gulp.dest('dist/imgs'))
+);
+
 
 // Watch Sass & Serve
 gulp.task('serve', ['sass'], function() {

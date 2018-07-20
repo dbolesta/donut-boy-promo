@@ -305,6 +305,16 @@ template {
 [hidden] {
   display: none; }
 
+#particles-js {
+  background: -webkit-gradient(linear, left bottom, left top, from(#52999F), to(#73d6de));
+  background: linear-gradient(to top, #52999F, #73d6de);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; }
+
 .grid {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -393,6 +403,12 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   line-height: 1; }
+
+.title-primary {
+  font-size: 5rem;
+  font-family: "D04b30";
+  text-shadow: -2px -2px 0 black, 0 -2px 0 black, 2px -2px 0 black, 2px 0 0 black, 2px 2px 0 black, 0 2px 0 black, -2px 2px 0 black, -2px 0 0 black;
+  letter-spacing: 0px; }
 
 .title-large {
   font-size: 3rem;
@@ -561,12 +577,11 @@ h2 {
     opacity: 0; }
 
 .hero {
-  background: -webkit-gradient(linear, left top, right top, from(#048ca8), to(#16db93));
-  background: linear-gradient(to right, #048ca8, #16db93);
   color: white;
-  padding-top: 8em;
   padding-bottom: 8em;
-  text-align: center; }
+  text-align: center;
+  position: relative;
+  background: url(../imgs/hero-hills.png) repeat-x left bottom; }
   @media (min-width: 725px) {
     .hero {
       text-align: left;

@@ -18,8 +18,11 @@
   "homepage": "https://github.com/dbolesta/donut-boy-promo#readme",
   "devDependencies": {
     "browser-sync": "^2.24.5",
+    "concat": "^1.0.3",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
     "gulp-sass": "^4.0.1"
   }
 }

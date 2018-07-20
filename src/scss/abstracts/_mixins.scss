@@ -1,3 +1,5 @@
+// breakpoints for responsive / media queries
+
 $breakpoints: (
   'small'  : ( min-width:  725px ),
   'medium' : ( min-width:  992px ),
@@ -19,3 +21,17 @@ $breakpoints: (
         + "Please make sure it is defined in `$breakpoints` map.";
   }
 } 
+
+
+// stroke for text
+@mixin stroke($color: #000, $size: 1px) {
+  text-shadow:
+    -#{$size} -#{$size} 0 $color,
+     0        -#{$size} 0 $color,
+     #{$size} -#{$size} 0 $color,
+     #{$size}  0        0 $color,
+     #{$size}  #{$size} 0 $color,
+     0         #{$size} 0 $color,
+    -#{$size}  #{$size} 0 $color,
+    -#{$size}  0        0 $color;
+}

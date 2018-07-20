@@ -1,9 +1,11 @@
 .hero {
-    background: linear-gradient(to right, $main,$secondary);
     color: $text-inverse;
-    padding-top: 8em;
+    //padding-top: 8em;
     padding-bottom: 8em;
     text-align: center;
+    position: relative;
+    
+    background:url(../imgs/hero-hills.png) repeat-x left bottom;
     
     @include respond-to(small) {
         text-align: left;
