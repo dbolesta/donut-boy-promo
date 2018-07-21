@@ -1552,3 +1552,7 @@ window.particlesJS.load = function(tag_id, path_config_json, callback){
 /*particlesJS.load('particles-js', 'js/particles.json', function() {
   console.log('callback - particles.js config loaded');
 });*/
+
+particlesJS.load('particles-js', 'js/particlesjs-config.json', function() {
+  console.log('callback - particles.js config loaded');
+});

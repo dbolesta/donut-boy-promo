@@ -1,6 +1,14 @@
-console.log("Hello World");
+//console.log("Hello World");
 
-// particles.js
-particlesJS.load('particles-js', 'js/particlesjs-config.json', function() {
-  console.log('callback - particles.js config loaded');
+// particles.js initiation located at end of vendor/particles.js
+
+$(document).ready(function(){
+    
+    // hamburger menu toggle
+    $('.hero-text h3 span').click(function(){
+        $('.info-box').toggleClass('is-showing');
+    });
+    $('.info-x').click(function(){
+        $('.info-box').toggleClass('is-showing');
+    });
 });

@@ -1,4 +1,6 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700,900");
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
 html {
   font-family: "Roboto", sans-serif; }
 
@@ -404,12 +406,6 @@ h2 {
   letter-spacing: 1.5px;
   line-height: 1; }
 
-.title-primary {
-  font-size: 5rem;
-  font-family: "D04b30";
-  text-shadow: -2px -2px 0 black, 0 -2px 0 black, 2px -2px 0 black, 2px 0 0 black, 2px 2px 0 black, 0 2px 0 black, -2px 2px 0 black, -2px 0 0 black;
-  letter-spacing: 0px; }
-
 .title-large {
   font-size: 3rem;
   font-weight: 900;
@@ -581,21 +577,76 @@ h2 {
   padding-bottom: 8em;
   text-align: center;
   position: relative;
-  background: url(../imgs/hero-hills.png) repeat-x left bottom; }
+  background: url(../imgs/hero-hills.png) repeat-x left bottom;
+  background-size: 13rem;
+  min-height: 200px; }
   @media (min-width: 725px) {
     .hero {
       text-align: left;
       padding-bottom: 0;
       height: 80vmin;
-      min-height: 800px; } }
+      min-height: 800px;
+      background-size: auto; } }
 
-@media (min-width: 725px) {
-  .hero-text {
-    margin-top: 10vmax; } }
+.hero-text {
+  text-align: center;
+  margin-top: 10vmax;
+  position: relative; }
+  .hero-text h1 {
+    font-size: 2.5rem;
+    font-family: "D04b30";
+    letter-spacing: 0px;
+    text-align: center;
+    text-shadow: -1px -1px 0 black, 0 -1px 0 black, 1px -1px 0 black, 1px 0 0 black, 1px 1px 0 black, 0 1px 0 black, -1px 1px 0 black, -1px 0 0 black; }
+    @media (min-width: 725px) {
+      .hero-text h1 {
+        font-size: 5rem;
+        text-shadow: -2px -2px 0 black, 0 -2px 0 black, 2px -2px 0 black, 2px 0 0 black, 2px 2px 0 black, 0 2px 0 black, -2px 2px 0 black, -2px 0 0 black; } }
+  .hero-text h3 {
+    font-size: 1rem;
+    line-height: 1.5em;
+    font-family: "Press Start 2P";
+    letter-spacing: 0px;
+    text-align: center;
+    text-shadow: -1px -1px 0 black, 0 -1px 0 black, 1px -1px 0 black, 1px 0 0 black, 1px 1px 0 black, 0 1px 0 black, -1px 1px 0 black, -1px 0 0 black; }
+    @media (min-width: 725px) {
+      .hero-text h3 {
+        font-size: 1.5rem;
+        text-shadow: -2px -2px 0 black, 0 -2px 0 black, 2px -2px 0 black, 2px 0 0 black, 2px 2px 0 black, 0 2px 0 black, -2px 2px 0 black, -2px 0 0 black; } }
+    .hero-text h3 span {
+      cursor: pointer;
+      font-size: 0.5em;
+      vertical-align: top; }
+  .hero-text .info-box {
+    opacity: 0;
+    -webkit-transition: opacity ease-in-out 150ms;
+    transition: opacity ease-in-out 150ms;
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    border: 3px solid white;
+    text-align: left;
+    text-shadow: -1px -1px 0 black, 0 -1px 0 black, 1px -1px 0 black, 1px 0 0 black, 1px 1px 0 black, 0 1px 0 black, -1px 1px 0 black, -1px 0 0 black; }
+    .hero-text .info-box ol {
+      padding-left: 0;
+      list-style-position: inside;
+      list-style-type: none;
+      margin-bottom: 0; }
+      .hero-text .info-box ol li:before {
+        content: '•';
+        margin-right: 0.5em; }
+    .hero-text .info-box .info-x {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      padding: 5px;
+      cursor: pointer; }
+  .hero-text .is-showing {
+    opacity: 1; }
 
-.hero--inverse {
-  background: -webkit-gradient(linear, left top, right top, from(#d31869), to(white));
-  background: linear-gradient(to right, #d31869, white); }
+.cta--1 {
+  background: -webkit-gradient(linear, left top, left bottom, from(#55C04C), to(#265522));
+  background: linear-gradient(to bottom, #55C04C, #265522); }
 
 .promo .bg-primary {
   text-align: left;
@@ -611,11 +662,14 @@ h2 {
 .sales-points {
   padding: 10vh 0; }
   .sales-points .sales-point {
-    margin-bottom: 2.5em; }
-    .sales-points .sales-point:first-of-type {
-      margin-top: 1.5em; }
-    .sales-points .sales-point:last-child {
-      margin-bottom: 0; }
+    margin-bottom: 2.5em;
+    /*&:first-of-type {
+            margin-top: 1.5em;
+        }
+        
+        &:last-child {
+            margin-bottom: 0;
+        }*/ }
 
 footer {
   background: #444;
@@ -692,38 +746,3 @@ footer {
   .btn--secondary:hover, .btn--secondary:focus {
     background: white;
     color: #048ca8; }
-
-.cta {
-  background-color: #16db93;
-  background-image: url(../img/call-to-action-background.jpg);
-  background-size: cover;
-  background-position: center;
-  padding: 5em 0;
-  background-blend-mode: multiply;
-  color: white;
-  position: relative;
-  overflow: hidden; }
-  @media (min-width: 725px) {
-    .cta {
-      padding: 10em 0; }
-      .cta::before, .cta::after {
-        content: '';
-        display: block;
-        background: #d31869;
-        position: absolute;
-        width: 100%;
-        border: 1em solid white; }
-      .cta::before {
-        top: 0;
-        bottom: -1em;
-        -webkit-transform: skewX(60deg);
-        transform: skewX(60deg);
-        left: -115%; }
-      .cta::after {
-        top: -1em;
-        bottom: 0;
-        -webkit-transform: skewX(60deg);
-        transform: skewX(60deg);
-        right: -115%; }
-      .cta .container--cta {
-        width: 50%; } }
