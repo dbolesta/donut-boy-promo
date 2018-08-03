@@ -53,8 +53,12 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch(['src/scss/*.scss'], ['sass']);
     gulp.watch(['src/scss/*/*.scss'], ['sass']);
     gulp.watch(['src/*.html'], ['copyHtml']);
+    gulp.watch(['src/js/*js'], ['scripts']);
+    
+    
     
     gulp.watch("dist/css/*.css").on('change', browserSync.reload);
+    gulp.watch("dist/js/*.js").on('change', browserSync.reload);
     gulp.watch("dist/*.html").on('change', browserSync.reload);
 });
 

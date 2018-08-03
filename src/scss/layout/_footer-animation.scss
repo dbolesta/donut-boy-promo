@@ -1,0 +1,55 @@
+.beach-floor {
+    background: url(/imgs/tile3.png) repeat-x left bottom;
+    height: 25px;
+    position: fixed;
+    bottom: -18px;
+    left: 0;
+    right: 0;
+}
+
+
+.donutboy-footer {
+    position: fixed;
+    bottom:0;
+    z-index: 99;
+    width: 50px;
+}
+
+.db-backwards {
+    transform: scaleX(-1);
+}
+
+
+.kelly-footer {
+    position: fixed;
+    bottom:0;
+    z-index: 99;
+    width: 50px;
+}
+
+
+
+
+.animated-db {
+  animation-duration: .4s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1.650);
+  animation-iteration-count: infinite;
+}
+.animated-kelly {
+  animation-duration: .37s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1.650);
+  animation-iteration-count: infinite;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.bounce {
+  animation-name: bounce;
+}

@@ -1,4 +1,5 @@
-// breakpoints for responsive / media queries
+/* breakpoints for responsive / media queries
+----------------------------------------------*/
 
 $breakpoints: (
   'small'  : ( min-width:  725px ),
@@ -20,10 +21,18 @@ $breakpoints: (
     @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
         + "Please make sure it is defined in `$breakpoints` map.";
   }
-} 
+}
+
+// usage 
+/*
+@include respond-to(small){
+    css here
+}
+*/
 
 
-// stroke for text
+/* stroke for text
+--------------------*/
 @mixin stroke($color: #000, $size: 1px) {
   text-shadow:
     -#{$size} -#{$size} 0 $color,

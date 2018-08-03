@@ -1,5 +1,13 @@
-footer {
+.place {
     background: $dark;
+    color: $text-inverse;
+    padding: 5em 0;
+    position: relative;
+}
+
+
+footer {
+    background: $puggsy-sky;
     color: $text-inverse;
     padding: 5em 0;
     position: relative;

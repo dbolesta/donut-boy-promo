@@ -76,3 +76,21 @@ h2 {
 .text-intro {
     font-size: 1.2rem;
 }
+
+
+
+.important-title {
+    font-family: $font-vg1;
+    @include stroke;
+    color: $white;
+    padding-bottom: 2em;
+}
+
+// might be obsolete?
+.section-title {
+    font-family: $font-vg1;
+    @include stroke(black, 1px);
+    letter-spacing: 1px;
+    font-size: 2.5rem;
+    color: white;
+}
