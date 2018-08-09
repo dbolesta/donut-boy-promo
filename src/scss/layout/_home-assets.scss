@@ -1,0 +1,79 @@
+.assets {
+    //background: $dark;
+    background: url("/imgs/tile4.png") repeat;
+    color: $text-inverse;
+    padding: 5em 0;
+    position: relative;
+    
+    
+    /*.enemy-display {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 1em;
+        align-items: center;
+        justify-items: center;
+        
+        div {
+            border: 1px solid white;
+            padding: 1em;
+            
+            img {
+                width: 100px;
+            }
+            
+        }
+        
+        
+    }*/
+    
+    .overflow-sidescroll {
+      display: flex;   
+      //border: 1px solid red;
+      position: relative;
+        
+      .sidescroll {
+        display: flex;
+        overflow-x: hidden;
+        background-color: $dark;
+        box-shadow: inset 0px 0px 10px 0px black;
+        transition: translate ease-in-out 150ms;
+          
+        div {
+            //border: 1px solid white;
+            min-width: 65px;
+            height: 65px;
+            padding: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            
+            @include respond-to(small) {
+                min-width: 100px;
+                height: 100px;
+            } 
+            
+            
+            img {
+                
+                &.selecto {
+                    @include imgHighlight($gold, 1px);
+                }
+                
+            }
+            
+            
+            
+        }
+      } // end sidescroll
+        
+        
+      // btn stuff in _buttons.scss
+        
+        
+        
+    } // end overflow-sidescroll 
+    
+    
+    
+}

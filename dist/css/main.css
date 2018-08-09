@@ -9,6 +9,8 @@
 */
 /* stroke for text
 --------------------*/
+/* stroke for png image
+--------------------*/
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 html {
@@ -902,11 +904,65 @@ h2 {
   100% {
     background-position: 0 -200px; } }
 
-.place {
-  background: #444;
+.assets {
+  background: url("/imgs/tile4.png") repeat;
   color: white;
   padding: 5em 0;
-  position: relative; }
+  position: relative;
+  /*.enemy-display {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 1em;
+        align-items: center;
+        justify-items: center;
+        
+        div {
+            border: 1px solid white;
+            padding: 1em;
+            
+            img {
+                width: 100px;
+            }
+            
+        }
+        
+        
+    }*/ }
+  .assets .overflow-sidescroll {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative; }
+    .assets .overflow-sidescroll .sidescroll {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      overflow-x: hidden;
+      background-color: #444;
+      -webkit-box-shadow: inset 0px 0px 10px 0px black;
+      box-shadow: inset 0px 0px 10px 0px black;
+      -webkit-transition: translate ease-in-out 150ms;
+      transition: translate ease-in-out 150ms; }
+      .assets .overflow-sidescroll .sidescroll div {
+        min-width: 65px;
+        height: 65px;
+        padding: 1em;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center; }
+        @media (min-width: 725px) {
+          .assets .overflow-sidescroll .sidescroll div {
+            min-width: 100px;
+            height: 100px; } }
+        .assets .overflow-sidescroll .sidescroll div img.selecto {
+          -webkit-filter: drop-shadow(-1px -1px 0 #FECE4F) drop-shadow(0 -1px 0 #FECE4F) drop-shadow(1px -1px 0 #FECE4F) drop-shadow(1px 0 0 #FECE4F) drop-shadow(1px 1px 0 #FECE4F) drop-shadow(0 1px 0 #FECE4F) drop-shadow(-1px 1px 0 #FECE4F) drop-shadow(-1px 0 0 #FECE4F);
+          filter: drop-shadow(-1px -1px 0 #FECE4F) drop-shadow(0 -1px 0 #FECE4F) drop-shadow(1px -1px 0 #FECE4F) drop-shadow(1px 0 0 #FECE4F) drop-shadow(1px 1px 0 #FECE4F) drop-shadow(0 1px 0 #FECE4F) drop-shadow(-1px 1px 0 #FECE4F) drop-shadow(-1px 0 0 #FECE4F); }
 
 footer {
   background: #BEA2DF;
@@ -953,16 +1009,23 @@ footer {
 .container--footer {
   max-width: 25em; }
 
+.footer-animation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99; }
+
 .beach-floor {
   background: url(/imgs/tile3.png) repeat-x left bottom;
   height: 25px;
-  position: fixed;
+  position: absolute;
   bottom: -18px;
   left: 0;
   right: 0; }
 
 .donutboy-footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   z-index: 99;
   width: 50px; }
@@ -972,7 +1035,7 @@ footer {
   transform: scaleX(-1); }
 
 .kelly-footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   z-index: 99;
   width: 50px; }
@@ -1016,6 +1079,70 @@ footer {
 .bounce {
   -webkit-animation-name: bounce;
   animation-name: bounce; }
+
+.btn-game {
+  background-color: #949494;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-top: 2px solid #B0B0B0;
+  border-left: 2px solid #B0B0B0;
+  border-right: 2px solid #7A7A7A;
+  border-bottom: 2px solid #7A7A7A;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-transition: all ease-in-out 50ms;
+  transition: all ease-in-out 50ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.btn-scroll {
+  width: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.btn-scroll--left {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  border-top: 2px solid #7A7A7A;
+  border-left: 2px solid #7A7A7A;
+  border-right: 2px solid #B0B0B0;
+  border-bottom: 2px solid #B0B0B0; }
+  .btn-scroll--left:hover:not(.btn-game--disabled) {
+    border-top-color: #616161;
+    border-left-color: #616161;
+    border-right-color: #979797;
+    border-bottom-color: #979797;
+    background-color: #7b7b7b; }
+  .btn-scroll--left:active:not(.btn-game--disabled) {
+    -webkit-transform: rotate(180deg) translateY(-1px);
+    transform: rotate(180deg) translateY(-1px); }
+
+.btn-scroll--right:hover:not(.btn-game--disabled) {
+  border-top-color: #979797;
+  border-left-color: #979797;
+  border-right-color: #616161;
+  border-bottom-color: #616161;
+  background-color: #7b7b7b; }
+
+.btn-scroll--right:active:not(.btn-game--disabled) {
+  -webkit-transform: translateY(1px);
+  transform: translateY(1px); }
+
+.btn-game--disabled {
+  color: rgba(255, 255, 255, 0.1);
+  background-color: #616161;
+  border-color: transparent;
+  cursor: default; }
 
 .btn {
   background: none;

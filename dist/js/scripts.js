@@ -65,7 +65,7 @@ $(document).ready(function(){
         //var position = ( (scrollPercent * ($(document).width() - ($(document).width() * .95) ) ) + ($(document).width() * .05)  ) ;
         
         
-        // Only when we havny reached kelly do we...
+        // Only when we havnt reached kelly do we...
         if (position < $kelly.position().left - $horizontal.width()) {
             
            // ...change position of donut boy    
@@ -82,10 +82,17 @@ $(document).ready(function(){
                 if (!$horizontalImg.hasClass('db-backwards')){
                     $horizontalImg.addClass('db-backwards');
                 }
-            }    
+            }   
+            
+            // ... make sure db is facing right if were at the top of the page
+            if (s == 0) {
+                if ($horizontalImg.hasClass('db-backwards')){
+                    $horizontalImg.removeClass('db-backwards');
+                }
+            }
             
             
-            // ...
+            // ... remove animation classes, if not already removed
             if ($horizontal.hasClass('bounce')){
                 $horizontal.removeClass('bounce');
                 $horizontal.removeClass('animated-db');
@@ -96,9 +103,9 @@ $(document).ready(function(){
             }
             
             
-        } else { // If we're up to Kelly...
+        } else { // If we HAVE reached Kelly...
             
-            // 
+            // ... add the necessary animation classes to both DB and Kelly
             if (!$horizontal.hasClass('bounce')){
                 $horizontal.addClass('bounce');
                 $horizontal.addClass('animated-kelly');
@@ -110,9 +117,9 @@ $(document).ready(function(){
             
         }
         
-        prevScroll = s; // update previous scroll position so we can detect if we've scrolled up or down
+        prevScroll = s; // update previous scroll position so we can compare the numbers, and detect if we've scrolled up or down
         
-        console.log(position);
+        //console.log(position);
         
     });
     
@@ -122,6 +129,75 @@ $(document).ready(function(){
             'right': $(document).width() - ($(document).width() * .95)
         });
     });
+    
+    
+    
+    
+    
+    /* scroll the enemy/item scrollbars
+    ----------------------------------- */
+    var numToScroll = 0;
+    
+    
+    $('.btn-scroll').on('click', function() {
+        var elem = document.querySelector('.sidescroll');
+        
+        var maxScrollLeft = elem.scrollWidth - elem.clientWidth;
+        
+        var widthOfDiv = elem.getElementsByTagName('div')[0].offsetWidth;
+        
+        
+    
+        if ($(this).hasClass("btn-scroll--right")){
+            numToScroll+= widthOfDiv * 2;
+            if (numToScroll > maxScrollLeft){
+                numToScroll = maxScrollLeft;
+            } 
+        }
+        if ($(this).hasClass("btn-scroll--left")) {
+            numToScroll-= widthOfDiv * 2;
+            if (numToScroll < 0) {
+                numToScroll = 0;
+            }
+        }
+        
+        
+        $('.sidescroll').animate({scrollLeft: numToScroll}, 150);
+        
+        
+        scrollBtnEnable(maxScrollLeft);
+        
+    });
+    
+    
+    function scrollBtnEnable(maxScroll){
+        /*console.log("we fireing dudes?");
+        console.log(numToScroll);
+        console.log(maxScroll);
+        console.log(numToScroll > 0 && numToScroll < maxScroll);
+        console.log($(".btn-scroll--left").hasClass("btn-game--disabled"));*/
+        
+        if (numToScroll > 0 && numToScroll < maxScroll) {
+            if ($(".btn-scroll--left").hasClass("btn-game--disabled")){
+                $(".btn-scroll--left").removeClass("btn-game--disabled");
+            }
+            if ($(".btn-scroll--right").hasClass("btn-game--disabled")){
+                $(".btn-scroll--right").removeClass("btn-game--disabled");
+            }
+        }
+        
+        if (numToScroll <= 0 && !$(".btn-scroll--left").hasClass("btn-game--disabled")){
+            $(".btn-scroll--left").addClass("btn-game--disabled");
+        } 
+        
+        if (numToScroll >= maxScroll && !$(".btn-scroll--right").hasClass("btn-game--disabled")){
+            $(".btn-scroll--right").addClass("btn-game--disabled");
+        }
+        
+        
+        
+        
+    }
     
     
     

@@ -1,7 +1,15 @@
+.footer-animation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
 .beach-floor {
     background: url(/imgs/tile3.png) repeat-x left bottom;
     height: 25px;
-    position: fixed;
+    position: absolute;
     bottom: -18px;
     left: 0;
     right: 0;
@@ -9,7 +17,7 @@
 
 
 .donutboy-footer {
-    position: fixed;
+    position: absolute;
     bottom:0;
     z-index: 99;
     width: 50px;
@@ -21,7 +29,7 @@
 
 
 .kelly-footer {
-    position: fixed;
+    position: absolute;
     bottom:0;
     z-index: 99;
     width: 50px;

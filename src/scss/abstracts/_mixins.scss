@@ -44,3 +44,17 @@ $breakpoints: (
     -#{$size}  #{$size} 0 $color,
     -#{$size}  0        0 $color;
 }
+
+/* stroke for png image
+--------------------*/
+@mixin imgHighlight($color: #000, $size: 1px) {     
+   filter: drop-shadow(-#{$size} -#{$size} 0 $color) 
+           drop-shadow(0         -#{$size} 0 $color)
+           drop-shadow(#{$size}  -#{$size} 0 $color) 
+           drop-shadow(#{$size}   0        0 $color)
+           drop-shadow(#{$size}   #{$size} 0 $color) 
+           drop-shadow(0          #{$size} 0 $color)
+           drop-shadow(-#{$size}  #{$size} 0 $color) 
+           drop-shadow(-#{$size}  0        0 $color);
+}
+

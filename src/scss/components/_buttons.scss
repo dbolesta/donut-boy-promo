@@ -1,3 +1,76 @@
+// for sidecrolling asset selector
+
+.btn-game {
+   background-color: #949494;
+   box-sizing: border-box;
+   border-top: 2px solid #B0B0B0; 
+   border-left: 2px solid #B0B0B0; 
+   border-right: 2px solid #7A7A7A; 
+   border-bottom: 2px solid #7A7A7A; 
+   border-radius: 3px;
+   cursor: pointer;
+   transition: all ease-in-out 50ms;
+   user-select: none; // prevent text from highlighting
+}
+
+.btn-scroll {
+    width: 25px;
+    display: flex;
+    padding: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-scroll--left {
+   transform: rotate(180deg);
+   border-top: 2px solid #7A7A7A; 
+   border-left: 2px solid #7A7A7A; 
+   border-right: 2px solid #B0B0B0; 
+   border-bottom: 2px solid #B0B0B0; 
+    
+    &:hover:not(.btn-game--disabled) {
+        border-top-color: darken(#7A7A7A, 10%);
+        border-left-color: darken(#7A7A7A, 10%);
+        border-right-color: darken(#B0B0B0, 10%);
+        border-bottom-color: darken(#B0B0B0, 10%);
+        background-color: darken(#949494, 10%);
+    }   
+    &:active:not(.btn-game--disabled) {
+        transform: rotate(180deg) translateY(-1px);
+    }   
+    
+}
+
+
+.btn-scroll--right {
+    
+    &:hover:not(.btn-game--disabled) {
+        border-top-color: darken(#B0B0B0, 10%);
+        border-left-color: darken(#B0B0B0, 10%);
+        border-right-color: darken(#7A7A7A, 10%);
+        border-bottom-color: darken(#7A7A7A, 10%);
+        background-color: darken(#949494, 10%);
+    }  
+    &:active:not(.btn-game--disabled) {
+        transform: translateY(1px);
+    } 
+    
+}
+
+.btn-game--disabled {
+    //opacity: 0.8;
+    color: rgba(255, 255, 255, 0.1);
+    background-color: darken(#949494, 20%);
+    border-color: transparent;
+    cursor: default;
+}
+
+
+
+
+
+// end game button stuff
+
 .btn {
   background: none;
   border: 2px solid;
