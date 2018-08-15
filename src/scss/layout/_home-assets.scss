@@ -2,8 +2,74 @@
     //background: $dark;
     background: url("/imgs/tile4.png") repeat;
     color: $text-inverse;
-    padding: 5em 0;
+    padding: 3em 0;
     position: relative;
+    
+    
+    
+    .asset-display {
+        
+        padding: 3em 0;
+        
+        .asset-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            .asset-image {
+                height: 150px;
+                width: 150px;
+                margin-right: 15px;
+            }
+            
+            
+            .asset-text {
+                height: 150px;
+                width: 110px;
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+                @include stroke(black, 2px);
+                
+                h2 {
+                    font-family: $font-vg2;
+                    
+                }
+                
+                
+                ul {
+                    padding-left: 0;
+                    list-style-position: inside;
+                    list-style-type: none;
+                    margin-bottom: 0;
+                    @include stroke(black, 1px);
+                    text-align: left;
+
+                    li {
+                        
+                        &:before {
+                            content: '•';
+                            margin-right: 0.5em;
+                        }
+                        &:first-child {
+                            margin-bottom: 0.75em;
+                        }
+                        
+                    }
+                }
+                
+            } // end enemy-text
+            
+            
+            
+        } // end enemy-info
+        
+        
+        
+        
+    } // end enemy-display
+    
+    
     
     
     /*.enemy-display {
@@ -26,26 +92,31 @@
         
     }*/
     
+    
+    
+    
     .overflow-sidescroll {
       display: flex;   
-      //border: 1px solid red;
       position: relative;
+      justify-content: center;
         
       .sidescroll {
         display: flex;
-        overflow-x: hidden;
+        overflow: hidden;
+          
         background-color: $dark;
         box-shadow: inset 0px 0px 10px 0px black;
         transition: translate ease-in-out 150ms;
           
         div {
             //border: 1px solid white;
-            min-width: 65px;
-            height: 65px;
+            min-width: 75px;
+            height: 75px;
             padding: 1em;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
             
             
             @include respond-to(small) {
@@ -53,13 +124,27 @@
                 height: 100px;
             } 
             
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+                
+            }
+            
             
             img {
                 
-                &.selecto {
+                transition: all ease-in-out 100ms;
+                max-height: 70px; // keeps images in .sidescroll from displaying too largly
+                
+                &.selected {
                     @include imgHighlight($gold, 1px);
                 }
                 
+            }
+            
+            .hidden-details {
+                display: none;
             }
             
             
@@ -75,5 +160,23 @@
     } // end overflow-sidescroll 
     
     
+    // give padding between the two smaller scrolls
+    .col--1-2 {
+        
+        @include respond-to(small){ 
+            &:first-of-type {
+                padding-right: 2em;
+            }
+            &:last-of-type {
+                padding-left: 2em;
+            }
+        }
+        
+        
+    }
     
-}
+    
+    
+    
+    
+} // end .assets

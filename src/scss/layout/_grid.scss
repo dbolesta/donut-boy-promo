@@ -10,6 +10,9 @@
     flex: 0 0 100%;
     box-sizing: border-box; // damon added? cause wasnt working on .bg-primary in _home-promo?
     //padding: 0 .75em;
+    // SETTING MIN-WIDTH:0 MAKES IT SO OVERFLOW:HIDDEN DOESNT EXPAND PAST FLEX BOX. FOUND: 
+    // https://stackoverflow.com/questions/12022288/how-to-keep-a-flex-item-from-overflowing-due-to-its-text
+    min-width: 0;
     
     @include respond-to(small) {
         

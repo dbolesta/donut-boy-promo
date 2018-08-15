@@ -56,7 +56,13 @@ $(document).ready(function(){
         
         
         
+        // take the current scroll position
+        // and divide it by the remaining page height
+        // (which is total height - viewable height)
+        // (all units in px)
         scrollPercent = (s / (d - c)); 
+        
+        
 
         //var position = ( (scrollPercent * ($(document).width() * .85 - $horizontal.width())) + $(document).width() * .05  ) ;
         
@@ -123,7 +129,7 @@ $(document).ready(function(){
         
     });
     
-    
+    // on resize, move kelly so she's always on screen
     $(window).on('resize', function() {
         $('.kelly-footer').css({
             'right': $(document).width() - ($(document).width() * .95)
@@ -136,69 +142,117 @@ $(document).ready(function(){
     
     /* scroll the enemy/item scrollbars
     ----------------------------------- */
-    var numToScroll = 0;
-    
     
     $('.btn-scroll').on('click', function() {
-        var elem = document.querySelector('.sidescroll');
         
+        // we grab the overflow-sidescroll container that is the parent of `this`
+        // we check the classlist, and select the second class, since the first is
+        // always .overflow-sidescroll. The second will be the unique identifier
+        var preElem = "." + this.closest('div').classList[1];
+        
+        
+        // Use the preElem to capture that sidescroll div
+        var elem = document.querySelector(preElem + ' .sidescroll');
+        
+        // capture current scrollleft of the sidescroll, to know how much to add or subtract
+        var numToScroll = elem.scrollLeft;
+        
+        
+        // get max possible scroll distance
         var maxScrollLeft = elem.scrollWidth - elem.clientWidth;
         
+        // get true width (including padding) of first indiviual item
         var widthOfDiv = elem.getElementsByTagName('div')[0].offsetWidth;
         
         
-    
+        // detect if left or right was selected
         if ($(this).hasClass("btn-scroll--right")){
-            numToScroll+= widthOfDiv * 2;
+            numToScroll+= widthOfDiv * 2; // scroll by 2 item sizes
+            // if past max scroll distance, scroll to end instead
             if (numToScroll > maxScrollLeft){
                 numToScroll = maxScrollLeft;
             } 
         }
         if ($(this).hasClass("btn-scroll--left")) {
             numToScroll-= widthOfDiv * 2;
+            // same as above, but dont allow to scroll past beginning
             if (numToScroll < 0) {
                 numToScroll = 0;
             }
         }
         
+        // scroll by number determined above
+        $(elem).animate({scrollLeft: numToScroll}, 150);
         
-        $('.sidescroll').animate({scrollLeft: numToScroll}, 150);
+        // function call to enable / disable buttons if min/max distance reached
+        scrollBtnEnable(maxScrollLeft, preElem, numToScroll);
         
-        
-        scrollBtnEnable(maxScrollLeft);
-        
-    });
+    }); // end .btn-scroll click event
     
     
-    function scrollBtnEnable(maxScroll){
-        /*console.log("we fireing dudes?");
-        console.log(numToScroll);
-        console.log(maxScroll);
-        console.log(numToScroll > 0 && numToScroll < maxScroll);
-        console.log($(".btn-scroll--left").hasClass("btn-game--disabled"));*/
+    function scrollBtnEnable(maxScroll, preElem, numToScroll){
         
-        if (numToScroll > 0 && numToScroll < maxScroll) {
-            if ($(".btn-scroll--left").hasClass("btn-game--disabled")){
-                $(".btn-scroll--left").removeClass("btn-game--disabled");
+        var leftButt = $(preElem + " .btn-scroll--left");
+        var rightButt = $(preElem + " .btn-scroll--right");
+        
+        
+        if (numToScroll >= 0 && numToScroll <= maxScroll) {
+            if (leftButt.hasClass("btn-game--disabled")){
+                leftButt.removeClass("btn-game--disabled");
             }
-            if ($(".btn-scroll--right").hasClass("btn-game--disabled")){
-                $(".btn-scroll--right").removeClass("btn-game--disabled");
+            if (rightButt.hasClass("btn-game--disabled")){
+                rightButt.removeClass("btn-game--disabled");
             }
         }
         
-        if (numToScroll <= 0 && !$(".btn-scroll--left").hasClass("btn-game--disabled")){
-            $(".btn-scroll--left").addClass("btn-game--disabled");
+        if (numToScroll <= 0 && !leftButt.hasClass("btn-game--disabled")){
+            leftButt.addClass("btn-game--disabled");
         } 
         
-        if (numToScroll >= maxScroll && !$(".btn-scroll--right").hasClass("btn-game--disabled")){
-            $(".btn-scroll--right").addClass("btn-game--disabled");
+        if (numToScroll >= maxScroll && !rightButt.hasClass("btn-game--disabled")){
+            rightButt.addClass("btn-game--disabled");
         }
         
         
-        
-        
-    }
+    } // end scrollBtnEnable()
     
+    
+    
+    /* Select New Enemy
+    ----------------------------------- */
+    $('.sidescroll div').on('click', function() {
+        
+        var preElem = "." + this.closest('.asset-display').classList[1];
+        var elem = document.querySelector(preElem).querySelector('.asset-info');
+        console.log(preElem);
+        
+        // remove .selected class from all images, then add it to the selected one
+        $(preElem + ' .sidescroll div img').removeClass("selected");
+        $(this).find("img").addClass("selected");
+        
+        // capture necessary info from selected image
+        const name = this.querySelector('.e-name').textContent;
+        const fact1 =  this.querySelector('.e-fact1').textContent;
+        const fact2 =  this.querySelector('.e-fact2').textContent;
+        
+        
+        // capture image name, then use regex to capture without directory or file extention (since we want to use .gif)
+        const image = this.querySelector('img').src;
+        var imageName;
+        if (preElem.indexOf("enemy") !== -1) {
+            imageName = image.match(/imgs\/(.*)\.png/)[1];
+            imageName = "/imgs/" + imageName + ".gif";
+        } else {
+            imageName = image;
+        }
+        
+        
+        // update main area with newly selected image and info
+        elem.querySelector(".asset-image img").src = imageName;
+        elem.querySelector(".asset-text h2").textContent = name;
+        elem.querySelector(".asset-text ul").getElementsByTagName('li')[0].textContent = fact1;
+        elem.querySelector(".asset-text ul").getElementsByTagName('li')[1].textContent = fact2;
+    });
     
     
 });
