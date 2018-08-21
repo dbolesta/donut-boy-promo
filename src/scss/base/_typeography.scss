@@ -86,6 +86,17 @@ h2 {
     padding-bottom: 2em;
 }
 
+
+
+.title-asset {
+    font-family: $font-vg2;
+    font-size: 1em;
+    @include stroke;
+    color: $white;
+    padding-bottom: 1em;
+}
+
+
 // might be obsolete?
 .section-title {
     font-family: $font-vg1;

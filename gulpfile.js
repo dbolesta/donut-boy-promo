@@ -31,7 +31,7 @@ gulp.task('vendorScripts', function() {
     .pipe(gulp.dest('dist/js'));
 });
 gulp.task('scripts', function() {
-  gulp.src('src/js/scripts.js')
+  gulp.src('src/js/*.js')
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest('dist/js'));
 });
@@ -43,6 +43,12 @@ gulp.task('imageMin', () =>
 		.pipe(gulp.dest('dist/imgs'))
 );
 
+// Copy audio files
+gulp.task('copyAudio', function(){
+    gulp.src('src/audio/*')
+        .pipe(gulp.dest('dist/audio'));
+});
+
 
 // Watch Sass & Serve
 gulp.task('serve', ['sass'], function() {
@@ -53,7 +59,7 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch(['src/scss/*.scss'], ['sass']);
     gulp.watch(['src/scss/*/*.scss'], ['sass']);
     gulp.watch(['src/*.html'], ['copyHtml']);
-    gulp.watch(['src/js/*js'], ['scripts']);
+    gulp.watch(['src/js/*.js'], ['scripts']);
     
     
     
