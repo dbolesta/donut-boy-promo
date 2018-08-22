@@ -13,7 +13,7 @@
     
     <!-- fonts -->
     <style>
-    @font-face {
+    /*@font-face {
             font-family: 'D04b30';
             src: url('fonts/f04b_30__-webfont.eot');
             src: url('fonts/04b_30__-webfont.eot?#iefix') format('embedded-opentype'),
@@ -23,7 +23,7 @@
                  url('fonts/04b_30__-webfont.svg#04b30') format('svg');
             font-weight: normal;
             font-style: normal;
-        }
+        }*/
     </style>
     
   
@@ -589,9 +589,32 @@
             <source src="audio/ditzy.mp3" id="mp3Source" type="audio/mpeg" />
             Your browser does not support the audio element.
         </audio>
+        <audio class="audio">
+           <source src="audio/bonk_beach.mp3" id="oggSource" type="audio/ogg" />
+           <source src="audio/bonk_beach.mp3" id="mp3Source" type="audio/mpeg" />
+           Your browser does not support the audio element. 
+        </audio>
 
 
     </div> <!-- end .player-->
+    
+    
+    
+    <!-- track list -->
+    <div class="track-list">
+        <ul>
+            <li><i class="fas fa-music"></i>Bonk Beach <span>2:56</span></li>
+            <li class="selected"><i class="fas fa-music"></i>Ditzy <span>2:56</span></li>
+            <li><i class="fas fa-music"></i>Essooess <span>3:30</span></li>
+            <li><i class="fas fa-music"></i>Grande Iced Latte <span>1:51</span></li>
+            <li><i class="fas fa-music"></i>You Done It <span>3:14</span></li>
+        </ul>
+        
+        
+        
+    </div> <!-- end .track-list -->
+    
+    
 </div> <!-- end .player-container-->    
             
             

@@ -9,6 +9,9 @@
 .player-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 5rem;
     
     .player {
         border-radius: 4px;
@@ -183,6 +186,68 @@
         
         
     } // end .player
+    
+    
+    
+    
+    
+    
+    
+    
+    .track-list {
+        background-color: #181818;
+        text-align: left;
+        font-family: $font-tracklist;
+        font-weight: 200;
+        min-width: 310px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            //padding: 1rem 4rem 1rem 2rem; 
+            
+            li {
+                padding: 1rem 2rem 1rem 1rem;
+                border-bottom: 1px solid #282828;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                
+                &:last-child {
+                    border-bottom: 0;
+                }
+                
+                &:hover {
+                    background-color: #282828;
+                }
+                
+                &.selected i {
+                    opacity: 1;
+                }
+                
+                
+                i {
+                    font-size: 1.5rem;
+                    margin-right: 1rem;
+                    opacity: 0;
+                }
+                
+                span {
+                    justify-self: flex-end;
+                    margin-left: auto;
+                }
+                
+            } // end li
+        } // end ul
+        
+        
+        
+    } // end .track-list
+    
+    
     
 } // end .player-container
 

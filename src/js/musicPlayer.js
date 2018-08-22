@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   $('.player-container').toArray().forEach(function(player){
+   $('.player').toArray().forEach(function(player){
     
        // find the audio tag 
        var audio = $(player).find("audio")[0];
@@ -148,6 +148,11 @@ var updateSeekbar = function(){
         return parseFloat(calcPercentage.toString());
     }
     
+    
+    
+    $(".track-list li").on("dblclick", function(){
+        console.log(this);
+    });
     
     
                   
