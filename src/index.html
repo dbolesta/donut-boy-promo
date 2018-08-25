@@ -386,8 +386,8 @@
                                 <img src="imgs/bullet_icon_clobb.png" alt="">
                                 <div class="hidden-details">
                                     <span class="e-name">Clobb</span>
-                                    <span class="e-fact1">AKA Big Shooty</span>
-                                    <span class="e-fact2">Laughably inaccurate</span>
+                                    <span class="e-fact1">Loud</span>
+                                    <span class="e-fact2">Inaccurate</span>
                                 </div>
                             </div>
                             <div>
@@ -545,54 +545,100 @@
 <div class="player-container">            
     <div class="player">
 
-        <div class="album-art">
-            <i class="fa fa-music"></i>
-        </div>
+        <div class="btns-container">
+           <div class="btns-top">
+                <button class="btn-music play">
+                    <i class="fa fa-play"></i>
+                    <i class="fa fa-pause"></i>
+                </button>
+           </div>
+           <div class="btns-bottom">
+                <button class="btn-back">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="btn-forward">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+           </div>
+        </div> <!-- end .btns-container -->
 
         <div class="info">
             <div class="audio-name">
-                Lorem ipsum dolor
+                Bonk Beach
             </div>
             <div class="seek-bar">
+                <span class="seek-handle"></span>
                 <span class="outer">
                     <span class="inner">
-
+                        
                     </span>
                 </span>
             </div> <!-- end .seek-bar -->
-            <div class="timing">
-                <span class="start">0:00</span>
-                <span class="end">0:00</span>
-            </div>
+            
+            <div class="volume-and-timing">
+                <div class="volume-control">
+                    <div class="wrapper">
+                       
+                        <i class="fa fa-volume-up"></i>
+                        
+                        <div class="volume-bar">
+                            <span class="volume-handle"></span>
+                            <span class="outer">
+                                <span class="inner">
+                                </span>
+                            </span> <!-- end outer -->
+                        </div><!-- end .volume-bar -->
+                        
+                    </div> <!-- end .wrapper -->
+                </div> <!-- end .volume-control -->
+                
+                <div class="timing">
+                    <span class="start">0:00</span>
+                    <span class="seperator">&nbsp;/&nbsp;</span>
+                    <span class="end">2:56</span>
+                </div>
+            </div> <!-- end .volume-and-timing -->
+            
+            
         </div> <!-- end .info -->
 
 
-        <div class="volume-control">
-            <div class="wrapper">
-                <i class="fa fa-volume-up"></i>
-                <span class="outer">
-                    <span class="inner">
+        
 
-                    </span>
-                </span>
-            </div> <!-- end .wrapper -->
-        </div> <!-- end .volume-control -->
+        
+        <div class="album-art">
+            <!-- <i class="fa fa-music"></i> -->
+            <img src="imgs/dbAlbumCover.png" alt="Donut Boy Soundtrack Album Cover">
+        </div> 
 
-
-        <button class="btn-music play">
-            <i class="fa fa-play"></i>
-            <i class="fa fa-pause"></i>
-        </button>
-
-        <audio class="audio">
+        
+        
+        
+        <!-- audio tracks for music player --> 
+        <audio class="audio" preload="metadata"> <!-- 0 -->
+           <source src="audio/bonk_beach.mp3" id="oggSource" type="audio/ogg" />
+           <source src="audio/bonk_beach.mp3" id="mp3Source" type="audio/mpeg" />
+           Your browser does not support the audio element. 
+        </audio>
+        <audio class="audio"> <!-- 1 -->
             <source src="audio/ditzy.ogg" id="oggSource" type="audio/ogg" />
             <source src="audio/ditzy.mp3" id="mp3Source" type="audio/mpeg" />
             Your browser does not support the audio element.
         </audio>
-        <audio class="audio">
-           <source src="audio/bonk_beach.mp3" id="oggSource" type="audio/ogg" />
-           <source src="audio/bonk_beach.mp3" id="mp3Source" type="audio/mpeg" />
-           Your browser does not support the audio element. 
+        <audio class="audio"> <!-- 2 -->
+           <source src="audio/essooess.ogg" id="oggSource" type="audio/ogg" />
+           <source src="audio/essooess.mp3" id="mp3Source" type="audio/mpeg" />
+           Your browser does not support the audio element.
+        </audio>
+        <audio class="audio"> <!-- 3 -->
+           <source src="audio/grande_iced_latte.ogg" id="oggSource" type="audio/ogg" />
+           <source src="audio/grande_iced_latte.mp3" id="mp3Source" type="audio/mpeg" />
+           Your browser does not support the audio element.
+        </audio>
+        <audio class="audio"> <!-- 4 -->
+           <source src="audio/you_done_it.ogg" id="oggSource" type="audio/ogg" />
+           <source src="audio/you_done_it.mp3" id="mp3Source" type="audio/mpeg" />
+           Your browser does not support the audio element.
         </audio>
 
 
@@ -603,8 +649,8 @@
     <!-- track list -->
     <div class="track-list">
         <ul>
-            <li><i class="fas fa-music"></i>Bonk Beach <span>2:56</span></li>
-            <li class="selected"><i class="fas fa-music"></i>Ditzy <span>2:56</span></li>
+            <li class="selected"><i class="fas fa-music"></i>Bonk Beach <span>2:56</span></li>
+            <li><i class="fas fa-music"></i>Ditzy <span>2:56</span></li>
             <li><i class="fas fa-music"></i>Essooess <span>3:30</span></li>
             <li><i class="fas fa-music"></i>Grande Iced Latte <span>1:51</span></li>
             <li><i class="fas fa-music"></i>You Done It <span>3:14</span></li>
@@ -629,40 +675,6 @@
             
             
            
-            <div class="col col--full">
-            
-            
-                <audio controls="controls">
-                   <source src="audio/bonk_beach.mp3" id="oggSource" type="audio/ogg" />
-                   <source src="audio/bonk_beach.mp3" id="mp3Source" type="audio/mpeg" />
-                   Your browser does not support the audio element.
-                </audio>
-
-                <audio controls="controls">
-                   <source src="audio/ditzy.ogg" id="oggSource" type="audio/ogg" />
-                   <source src="audio/ditzy.mp3" id="mp3Source" type="audio/mpeg" />
-                   Your browser does not support the audio element.
-                </audio> 
-
-                <audio controls="controls">
-                   <source src="audio/essooess.ogg" id="oggSource" type="audio/ogg" />
-                   <source src="audio/essooess.mp3" id="mp3Source" type="audio/mpeg" />
-                   Your browser does not support the audio element.
-                </audio>
-
-                <audio controls="controls">
-                   <source src="audio/grande_iced_latte.ogg" id="oggSource" type="audio/ogg" />
-                   <source src="audio/grande_iced_latte.mp3" id="mp3Source" type="audio/mpeg" />
-                   Your browser does not support the audio element.
-                </audio>
-
-                <audio controls="controls">
-                   <source src="audio/you_done_it.ogg" id="oggSource" type="audio/ogg" />
-                   <source src="audio/you_done_it.mp3" id="mp3Source" type="audio/mpeg" />
-                   Your browser does not support the audio element.
-                </audio>
-            
-            </div> <!-- end col full of audio tags-->
         </div> <!-- end .container .grid -->
     </section> <!-- end .music -->
     
