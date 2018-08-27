@@ -52,6 +52,10 @@
                     cursor: pointer;
                     font-size: 1.5rem;
                     transition: all ease 0.5s;
+                    
+                    &:hover {
+                        //background-color: darken($white, 10%);
+                    }
 
                     &.play {
                         .fa-pause {

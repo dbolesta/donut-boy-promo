@@ -66,7 +66,7 @@ $(document).ready(function(){
 
         //var position = ( (scrollPercent * ($(document).width() * .85 - $horizontal.width())) + $(document).width() * .05  ) ;
         
-        var position = ( (scrollPercent * ($kelly.position().left - $horizontal.width())) + ($(document).width() * .05)  ) ;
+        var position = ( (scrollPercent * ($kelly.position().left - $horizontal.width())) + ($(document).width() * .01)  ) ;
         
         //var position = ( (scrollPercent * ($(document).width() - ($(document).width() * .95) ) ) + ($(document).width() * .05)  ) ;
         

@@ -46,6 +46,7 @@
                     text-align: left;
 
                     li {
+                        text-indent: -0.8em; // to combat fake li margin
                         
                         &:before {
                             content: '•';

@@ -2,8 +2,12 @@
 footer {
     background: $puggsy-sky;
     color: $text-inverse;
-    padding: 5em 0;
+    //padding: 15em 0;
+    height: 30em; // no padding, since footerAnim.js doesnt calculate padding and stuff
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     &::before {
         content: '';
@@ -13,7 +17,7 @@ footer {
         bottom: 30px;
         right: 30px;
         left: 30px;
-        background: url(../img/logo.svg);
+        //background: url(../img/logo.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;

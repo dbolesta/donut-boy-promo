@@ -190,7 +190,6 @@ var intervalCheck = function(){
           //Audio has ended
           if(audio.ended){
               clearInterval(interval);
-              $(player).find(".albumArt").removeClass("animate");
               _button.removeClass("pause").addClass("play");
               seekbarInner.width(100+"%");
               updateMusicAnim();

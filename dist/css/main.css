@@ -971,11 +971,13 @@ h2 {
           margin-bottom: 0;
           text-shadow: -1px -1px 0 black, 0 -1px 0 black, 1px -1px 0 black, 1px 0 0 black, 1px 1px 0 black, 0 1px 0 black, -1px 1px 0 black, -1px 0 0 black;
           text-align: left; }
-          .assets .asset-display .asset-info .asset-text ul li:before {
-            content: '•';
-            margin-right: 0.5em; }
-          .assets .asset-display .asset-info .asset-text ul li:first-child {
-            margin-bottom: 0.75em; }
+          .assets .asset-display .asset-info .asset-text ul li {
+            text-indent: -0.8em; }
+            .assets .asset-display .asset-info .asset-text ul li:before {
+              content: '•';
+              margin-right: 0.5em; }
+            .assets .asset-display .asset-info .asset-text ul li:first-child {
+              margin-bottom: 0.75em; }
   .assets .overflow-sidescroll {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1400,8 +1402,17 @@ h2 {
 footer {
   background: #BEA2DF;
   color: white;
-  padding: 5em 0;
-  position: relative; }
+  height: 30em;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
   footer::before {
     content: '';
     display: block;
@@ -1410,7 +1421,6 @@ footer {
     bottom: 30px;
     right: 30px;
     left: 30px;
-    background: url(../img/logo.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -1444,22 +1454,44 @@ footer {
 
 .footer-animation {
   position: fixed;
-  bottom: 0;
+  bottom: 8px;
   left: 0;
   right: 0;
-  z-index: 99; }
+  z-index: 99;
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px); }
 
 .beach-floor {
-  background: url(/imgs/tile3.png) repeat-x left bottom;
-  height: 25px;
+  width: 100%;
+  height: 75px;
+  position: absolute; }
+  .beach-floor .beach-top {
+    background: url(/imgs/tile3.png) repeat-x left bottom;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0; }
+  .beach-floor .beach-reg {
+    background: url(/imgs/tile5.png) repeat left top;
+    height: 50px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0; }
+
+.beach-waves {
+  background: url(/imgs/beach-waves.png) repeat-x left bottom;
+  width: 100%;
+  height: 225px;
   position: absolute;
-  bottom: -18px;
-  left: 0;
-  right: 0; }
+  top: 40px;
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px); }
 
 .donutboy-footer {
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   z-index: 99;
   width: 50px; }
 
@@ -1469,7 +1501,7 @@ footer {
 
 .kelly-footer {
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   z-index: 99;
   width: 50px; }
 
