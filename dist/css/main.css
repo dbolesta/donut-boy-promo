@@ -1515,7 +1515,7 @@ footer {
 
 .footer-animation {
   position: fixed;
-  bottom: 8px;
+  bottom: 0;
   left: 0;
   right: 0;
   z-index: 99; }
@@ -1523,7 +1523,20 @@ footer {
 .beach-floor {
   width: 100%;
   height: 75px;
-  position: absolute; }
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -66px; }
+  .beach-floor .donutboy-footer {
+    position: absolute;
+    top: -48px;
+    z-index: 99;
+    width: 50px; }
+  .beach-floor .kelly-footer {
+    position: absolute;
+    top: -48px;
+    z-index: 99;
+    width: 50px; }
   .beach-floor .beach-top {
     background: url(/imgs/tile3.png) repeat-x left bottom;
     height: 25px;
@@ -1543,8 +1556,8 @@ footer {
   background: url(/imgs/shells_foreground.png) repeat left top;
   height: 60px;
   position: absolute;
-  top: 25px;
-  left: 0;
+  bottom: -120px;
+  left: 5px;
   right: 0;
   width: 100%; }
 
@@ -1553,50 +1566,49 @@ footer {
   width: 100%;
   height: 225px;
   position: absolute;
-  top: 20px; }
+  bottom: -350px; }
 
 .beach-dock {
   position: absolute;
-  top: 120px;
+  bottom: -220px;
   left: 35%; }
 
 .beach-tree {
   position: absolute;
-  top: 20px;
+  bottom: -320px;
   left: 15%; }
 
 .beach-castle {
   position: absolute;
-  top: 20px;
   right: -25px;
   width: 50%;
-  bottom: -40px; }
+  bottom: -390px; }
   @media (min-width: 725px) {
     .beach-castle {
       width: auto; } }
 
 .beach-crab {
   position: absolute;
-  top: 40px;
+  bottom: -40px;
   left: 30%;
   -webkit-animation: crabWalk 7s linear infinite;
   animation: crabWalk 7s linear infinite; }
 
 .beach-ship {
   position: absolute;
-  top: 50px;
+  bottom: -140px;
   left: 62%; }
 
 .beach-gull {
   position: absolute;
-  top: 40px;
+  bottom: -100px;
   left: 12%;
   -webkit-animation: gullFly 15s linear infinite;
   animation: gullFly 15s linear infinite; }
 
 .beach-cloud {
   position: absolute;
-  top: 40px;
+  bottom: -175px;
   left: 0%;
   -webkit-animation: cloudMove 35s linear infinite;
   animation: cloudMove 35s linear infinite;
@@ -1604,7 +1616,7 @@ footer {
 
 .beach-cloud2 {
   position: absolute;
-  top: 40px;
+  bottom: -75px;
   left: 0%;
   -webkit-animation: cloudMove 45s linear infinite;
   animation: cloudMove 45s linear infinite;
@@ -1612,7 +1624,7 @@ footer {
 
 .beach-cloud3 {
   position: absolute;
-  top: 40px;
+  bottom: -75px;
   left: 0%;
   -webkit-animation: cloud3Move 55s linear infinite;
   animation: cloud3Move 55s linear infinite;
@@ -1620,29 +1632,17 @@ footer {
 
 .beach-rock {
   position: absolute;
-  top: 70px;
+  bottom: -70px;
   left: 2%; }
 
 .beach-shell {
   position: absolute;
-  top: 70px;
+  bottom: -70px;
   left: 62%; }
-
-.donutboy-footer {
-  position: absolute;
-  bottom: -5px;
-  z-index: 99;
-  width: 50px; }
 
 .db-backwards {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1); }
-
-.kelly-footer {
-  position: absolute;
-  bottom: -5px;
-  z-index: 99;
-  width: 50px; }
 
 .animated-db {
   -webkit-animation-duration: .4s;

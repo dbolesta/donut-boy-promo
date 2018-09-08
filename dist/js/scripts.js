@@ -1,3 +1,9 @@
+/// This code is responsible for the footer elements sliding up at variable speeds when 
+// the user scrolls to the bottom of the page
+// we calculate the footer percentage, then control the 'bottom' style of 
+// all of the images and divs in the footer
+
+
 // bless this question:
 // https://stackoverflow.com/questions/33859522/how-much-of-an-element-is-visible-in-viewport
 
@@ -6,6 +12,8 @@
     var results = {};
     var footer$ = $(document.querySelector('footer'));
 
+    
+    // debug: used for showing the % of footer on screen
     function display() {
         var resultString = '';
 
@@ -16,6 +24,7 @@
         $('#result').text(resultString);
     }
 
+    // where we actually figure out and calculate percentage of footer on screen
     function calculateVisibilityForFooter() {
         var windowHeight = $(window).height(),
             docScroll = $(document).scrollTop(),
@@ -23,10 +32,10 @@
             footerPosition = footer$.offset().top,
             // Hidden before = Ammount of div hidden by the TOP of the window
             // Hidden after = Ammount of div hidden by the BOTTOM of the window
-            hiddenBefore = docScroll - footerPosition,
+            //hiddenBefore = docScroll - footerPosition,
             hiddenAfter = (footerPosition + footerHeight) - (docScroll + windowHeight);
         
-
+        
         if ((docScroll > footerPosition + footerHeight) || (footerPosition > docScroll + windowHeight)) {
             return 0;
         } else {
@@ -47,57 +56,46 @@
         }
         
     }
-
+    
+    // debug: used to show percentage on top of screen
     function calculateAndDisplayFooter() {
-            //var footer$ = $('footer').eq(0);
-           
-        
-        //console.log("DIV?? ", footer$);
-            results[footer$.attr('id')] = calculateVisibilityForFooter();
-
+        results[footer$.attr('id')] = calculateVisibilityForFooter();
         display();
     }
     
     
+    
+    // we create an array of all of our 'actors' in the footer
+    // all actors will have a `data-anim-start` and `data-anim-end` attribute,
+    // so we can assume all elems with a '[data-anim-start]' will be an actor
     var animActors = [];
     
-    /*$.each(footer$, function(index, elem){
-        animActors.push(elem);
-        //$(".beach-tree").is('[data-anim-start]')
-    })*/
-    
     $('[data-anim-start]').each(function(){
-       //animActors.push(this.dataset); 
+        // we collect the necessary info: the elem itself, and start and end positions
         animActors.push({
             elem: this,
             start: this.dataset.animStart,
-            end: this.dataset.animEnd,
-            value: this.dataset.animValue ? 'bottom' : 'top'
+            end: this.dataset.animEnd
         });
     });
     
-    /*console.log("Heres anim actors");
-    console.log(animActors);
-    */
     
+    // brain of the animation
     function updateFooterAnim() {
-        //console.log("updating footer anim func");
         
+        // we need the percentage calculation to base our math off
         var footerVisibility = calculateVisibilityForFooter();
         var actor;
         var newPosition;
         
         for (var i = 0; i < animActors.length; i++) {
             actor = animActors[i];
-            //console.log(actor);
             
+            // we take the final position that we want all actors to end up at (using 'bottom' style)
+            // and calculate the percentage difference of that final position relative to its start position
+            // ( ( %ofVisibleFooter / 100 ) * endPosition ) + startPosition
             newPosition = ( Number((footerVisibility / 100) * actor.end)) + Number(actor.start);
-            if (actor.value == "bottom"){
-                //console.log(Number((( footerVisibility / 100) * actor.end)) + Number(actor.start));
-                //console.log(actor.value);
-            }
-            
-            $(actor.elem).css(actor.value, newPosition+"px");
+            $(actor.elem).css('bottom', newPosition+"px");
             
         }
         
@@ -106,23 +104,33 @@
     
 
     $(document).scroll(function () {
-        //calculateAndDisplayFooter();
-        //console.log(calculateVisibilityForFooter());
+        
+        // debug purposes, update % on scroll
         calculateAndDisplayFooter();
         
-        
-        // CHANGE THIS to CHECK OFFSEt toP OF FOOTER BASED ON VIEWPORT??
-        //WILL BE BETTER FOR  PERFORMANCE
-        if (calculateVisibilityForFooter() > 0){
+        // this if statement checks to see if the footer is within the view of the window (with a 10px buffer). If it is, we update the position of all actors accordingly
+        if (($(window).scrollTop() + window.innerHeight) - document.querySelector('footer').offsetTop >= -10) {
             updateFooterAnim();
         }
         
+        // this if statement is a SAFTEY CHECK. Without it, if you were to scroll up very quickly from the bottom of the page, the above if statement would not run, keeping the footer actors on screen
+        // what we do here is, if we are not in footer territory, check once to see if the first actor is in its starting position. If not, we update the positions of all actors, which will get all the elements back in their correct starting positions (off screen)
+        if (($(window).scrollTop() + window.innerHeight) - document.querySelector('footer').offsetTop < -10 &&
+           parseInt(animActors[0].start) < parseInt(animActors[0].elem.style.bottom)
+           ) {
+            updateFooterAnim();
+        }
+        
+        
+        
+        
+        
     });
 
-    $(document).ready(function () {
-        //calculateAndDisplayFooter();
+    // debug
+   /* $(document).ready(function () {
         calculateAndDisplayFooter();
-    });
+    });*/
     
     
     
