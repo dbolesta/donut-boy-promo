@@ -1,9 +1,11 @@
 
 footer {
-    background: $puggsy-sky;
+    //background: $puggsy-sky;
+    //background: linear-gradient(to top, $puggsy-sky, $puggsy-sky-darken);
+    background: linear-gradient(to bottom, $dusk-top, $dusk-bottom);
     color: $text-inverse;
     //padding: 15em 0;
-    height: 30em; // no padding, since footerAnim.js doesnt calculate padding and stuff
+    height: 35em; // no padding, since footerAnim.js doesnt calculate padding and stuff
     position: relative;
     display: flex;
     align-items: center;

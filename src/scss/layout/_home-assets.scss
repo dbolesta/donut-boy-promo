@@ -5,7 +5,23 @@
     padding: 3em 0;
     position: relative;
     
+    .pipe-details {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .pipe-details-inverse {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
     
+    .col {
+        z-index: 1; // to appear over pipe details
+        // SETTING MIN-WIDTH:0 MAKES IT SO OVERFLOW:HIDDEN DOESNT EXPAND PAST FLEX BOX. FOUND: 
+        // https://stackoverflow.com/questions/12022288/how-to-keep-a-flex-item-from-overflowing-due-to-its-text 
+        min-width: 0;
+    }
     
     .asset-display {
         
@@ -29,11 +45,11 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: left;
-                @include stroke(black, 2px);
+                @include stroke(black, 1px);
                 
                 h2 {
                     font-family: $font-vg2;
-                    
+                    font-size: 1em;
                 }
                 
                 

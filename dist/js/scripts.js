@@ -1,3 +1,6 @@
+// bless this question:
+// https://stackoverflow.com/questions/33859522/how-much-of-an-element-is-visible-in-viewport
+
 (function ($) {
     'use strict';
     var results = {};
@@ -31,8 +34,6 @@
             
             // BY HIDING THIS BLOCK, THIS CODE WILL RETURN THE PERCENTAGE UNTIL THE BOTTOM OF 
             // FOOTER HAS HIT THE BOTTOM OF THE WINDOW, ONCE THE FOOTER IS WITHIN THE WINDOW
-            
-            
             /*if (hiddenBefore > 0) {
                 result -= (hiddenBefore * 100) / footerHeight;
             }*/
@@ -56,6 +57,53 @@
 
         display();
     }
+    
+    
+    var animActors = [];
+    
+    /*$.each(footer$, function(index, elem){
+        animActors.push(elem);
+        //$(".beach-tree").is('[data-anim-start]')
+    })*/
+    
+    $('[data-anim-start]').each(function(){
+       //animActors.push(this.dataset); 
+        animActors.push({
+            elem: this,
+            start: this.dataset.animStart,
+            end: this.dataset.animEnd,
+            value: this.dataset.animValue ? 'bottom' : 'top'
+        });
+    });
+    
+    /*console.log("Heres anim actors");
+    console.log(animActors);
+    */
+    
+    function updateFooterAnim() {
+        //console.log("updating footer anim func");
+        
+        var footerVisibility = calculateVisibilityForFooter();
+        var actor;
+        var newPosition;
+        
+        for (var i = 0; i < animActors.length; i++) {
+            actor = animActors[i];
+            //console.log(actor);
+            
+            newPosition = ( Number((footerVisibility / 100) * actor.end)) + Number(actor.start);
+            if (actor.value == "bottom"){
+                //console.log(Number((( footerVisibility / 100) * actor.end)) + Number(actor.start));
+                //console.log(actor.value);
+            }
+            
+            $(actor.elem).css(actor.value, newPosition+"px");
+            
+        }
+        
+    }
+    
+    
 
     $(document).scroll(function () {
         //calculateAndDisplayFooter();
@@ -63,14 +111,11 @@
         calculateAndDisplayFooter();
         
         
-        
-        
-        var newTrans = (calculateVisibilityForFooter() / 100) * -67;
-        $('.footer-animation').css("transform", "translateY("+newTrans+"px)");
-        
-        var newTrans2 = (calculateVisibilityForFooter() / 100) * -175;
-        $('.beach-waves').css("transform", "translateY("+newTrans2+"px)");
-        
+        // CHANGE THIS to CHECK OFFSEt toP OF FOOTER BASED ON VIEWPORT??
+        //WILL BE BETTER FOR  PERFORMANCE
+        if (calculateVisibilityForFooter() > 0){
+            updateFooterAnim();
+        }
         
     });
 
@@ -452,6 +497,12 @@ var $kelly = $('.kelly-footer');
 
 $(document).ready(function(){
     
+     /* Activate FitVids jQuery plugin (located in pluginScripts.js)
+    --------------------------------------------------------------- */
+    //$(".video-container").fitVids();
+    
+    
+    
     /* hamburger menu toggle
     ------------------------- */
     $('.hero-text h3 span').click(function(){
@@ -571,6 +622,12 @@ $(document).ready(function(){
         $('.kelly-footer').css({
             'right': $(document).width() - ($(document).width() * .95)
         });
+        
+        // also move damon
+        $horizontal.css({
+          'left': ( (scrollPercent * ($kelly.position().left - $horizontal.width())) + ($(document).width() * .01)  )
+         }); 
+        
     });
     
     
@@ -690,6 +747,10 @@ $(document).ready(function(){
         elem.querySelector(".asset-text ul").getElementsByTagName('li')[0].textContent = fact1;
         elem.querySelector(".asset-text ul").getElementsByTagName('li')[1].textContent = fact2;
     });
+    
+    
+    
+   
     
     
 });

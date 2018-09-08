@@ -15,6 +15,12 @@ var $kelly = $('.kelly-footer');
 
 $(document).ready(function(){
     
+     /* Activate FitVids jQuery plugin (located in pluginScripts.js)
+    --------------------------------------------------------------- */
+    //$(".video-container").fitVids();
+    
+    
+    
     /* hamburger menu toggle
     ------------------------- */
     $('.hero-text h3 span').click(function(){
@@ -134,6 +140,12 @@ $(document).ready(function(){
         $('.kelly-footer').css({
             'right': $(document).width() - ($(document).width() * .95)
         });
+        
+        // also move damon
+        $horizontal.css({
+          'left': ( (scrollPercent * ($kelly.position().left - $horizontal.width())) + ($(document).width() * .01)  )
+         }); 
+        
     });
     
     
@@ -253,6 +265,10 @@ $(document).ready(function(){
         elem.querySelector(".asset-text ul").getElementsByTagName('li')[0].textContent = fact1;
         elem.querySelector(".asset-text ul").getElementsByTagName('li')[1].textContent = fact2;
     });
+    
+    
+    
+   
     
     
 });

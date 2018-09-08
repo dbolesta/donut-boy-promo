@@ -4,7 +4,6 @@
     left: 0;
     right: 0;
     z-index: 99;
-    transform: translateY(0px);
 }
 
 .beach-floor {
@@ -29,6 +28,18 @@
         left: 0;
         right: 0;
     }
+    
+    
+}
+
+.beach-shells-foreground {
+    background: url(/imgs/shells_foreground.png) repeat left top;
+    height: 60px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    width: 100%;
 }
 
 .beach-waves {
@@ -36,9 +47,89 @@
     width: 100%;
     height: 225px;
     position: absolute;
-    top: 40px;
-    transform: translateY(0px);
+    top: 20px;
 }
+
+.beach-dock {
+    position: absolute;
+    top: 120px;
+    left: 35%;
+}
+
+
+.beach-tree {
+    position: absolute;
+    top: 20px;
+    left: 15%;
+}
+
+.beach-castle {
+    position: absolute;
+    top: 20px;
+    right: -25px;    width: 50%;
+    bottom:-40px;
+    
+    @include respond-to(small){
+        width: auto;
+    }
+}
+
+.beach-crab {
+    position: absolute;
+    top: 40px;
+    left: 30%; 
+    animation: crabWalk 7s linear infinite;
+}
+
+.beach-ship {
+    position: absolute;
+    top: 50px;
+    left: 62%; 
+}
+
+.beach-gull {
+    position: absolute;
+    top: 40px;
+    left: 12%; 
+    animation: gullFly 15s linear infinite;
+}
+
+
+.beach-cloud {
+    position: absolute;
+    top: 40px;
+    left: 0%; //12%; 
+    animation: cloudMove 35s linear infinite;
+    opacity: 0.6;
+}
+
+.beach-cloud2 {
+    position: absolute;
+    top: 40px;
+    left: 0%; //60%; 
+    animation: cloudMove 45s linear infinite;
+    opacity: 0.6;
+}
+.beach-cloud3 {
+    position: absolute;
+    top: 40px;
+    left: 0%; //60%; 
+    animation: cloud3Move 55s linear infinite;
+    opacity: 0.6;
+}
+
+
+.beach-rock {
+    position: absolute;
+    top: 70px;
+    left: 2%; 
+}
+.beach-shell {
+    position: absolute;
+    top: 70px;
+    left: 62%; 
+}
+
 
 
 
@@ -63,7 +154,7 @@
 
 
 
-
+// animations for damon & kelly
 .animated-db {
   animation-duration: .4s;
   animation-fill-mode: both;
@@ -87,3 +178,36 @@
 .bounce {
   animation-name: bounce;
 }
+
+
+
+
+@keyframes crabWalk {
+    0%{margin-left: 0px; transform: scaleX(1); animation-timing-function: steps(1, end);}
+    10% {margin-left: 0px;  transform: scaleX(-1); }
+    50% {margin-left: 100px;  transform: scaleX(-1); animation-timing-function: steps(1, end);}
+    60% {margin-left: 100px;  transform: scaleX(1);}
+    100%{margin-left: 0px;  transform: scaleX(1);}      
+}
+
+@keyframes gullFly {
+    0%{margin-left: 0px; transform: scaleX(-1); animation-timing-function: steps(1, end);}
+    0.1% {margin-left: 0px;  transform: scaleX(1); }
+    50% {margin-left: 600px;  transform: scaleX(1); animation-timing-function: steps(1, end);}
+    50.1% {margin-left: 600px;  transform: scaleX(-1);}
+    100%{margin-left: 0px;  transform: scaleX(-1);}      
+}
+
+@keyframes cloudMove {
+    0%{left: -20%;}
+    100%{left: 100%;}      
+}
+
+@keyframes cloud3Move {
+    0%{left: 50%;}
+    50%{left: 120%; animation-timing-function: steps(1, end);} 
+    50.1%{left: -20%; }
+    100%{left: 50%;}
+}
+
+

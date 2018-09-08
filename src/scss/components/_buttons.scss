@@ -85,6 +85,21 @@
 }
 
 
+
+/*.btn--play {
+    @include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
+    //@include btn-border-drawing;
+}*/
+
+.btn--play {
+    font-size: 2rem;    
+    border-width: 10px;
+    border-bottom-width: 10px;
+    display: inline-block;
+}
+
+
+
 .btn--primary {
   $color: #FDACAF;
   color: $color;
@@ -114,6 +129,10 @@
     
     
 }
+
+
+
+
 
 @keyframes sawtooth {
   100% {

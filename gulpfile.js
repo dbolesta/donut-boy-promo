@@ -30,6 +30,11 @@ gulp.task('vendorScripts', function() {
     .pipe(concat('vendorScripts.js'))
     .pipe(gulp.dest('dist/js'));
 });
+gulp.task('pluginScripts', function() {
+  gulp.src('src/js/plugins/*.js')
+    .pipe(concat('pluginScripts.js'))
+    .pipe(gulp.dest('dist/js'));
+});
 gulp.task('scripts', function() {
   gulp.src('src/js/*.js')
     .pipe(concat('scripts.js'))
@@ -60,12 +65,15 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch(['src/scss/*/*.scss'], ['sass']);
     gulp.watch(['src/*.html'], ['copyHtml']);
     gulp.watch(['src/js/*.js'], ['scripts']);
+    gulp.watch(['src/js/plugins/*.js'], ['pluginScripts']);
+    gulp.watch(['src/imgs/*'], ['imageMin']);
     
     
     
     gulp.watch("dist/css/*.css").on('change', browserSync.reload);
     gulp.watch("dist/js/*.js").on('change', browserSync.reload);
     gulp.watch("dist/*.html").on('change', browserSync.reload);
+    gulp.watch("dist/imgs/*").on('change', browserSync.reload);
 });
 
 // Default Task

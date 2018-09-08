@@ -1,4 +1,50 @@
 .cta--1 {
     background: linear-gradient(to bottom, #55C04C,#265522);
-  
+    padding-top: 2em;
+    
+    h1 {
+        padding-bottom: 0;
+    }
+    
+    .why-play {
+        display: flex;
+        justify-content: center;
+        margin-top: 1em;
+        vertical-align: top;
+        
+        .why-card {
+            width: 150px;
+            margin: 0 1em;
+            
+            @include respond-to(small){
+                width: 120px;
+                margin: 0 4em;
+            }
+            
+            svg {
+                width: 50%;
+                margin-bottom: 0.5em;
+            }
+            
+            p {
+                color: white;
+                @include stroke(black, 0.5px);
+            }
+            
+            
+        }
+        
+    } // end .why-play
+    
+    .not-convinced {
+        margin-top: 2em;
+        
+        p {
+            color: white;
+            @include stroke(black, 0.5px);
+            font-size: 18px;
+        }
+    }
+    
 }
+ 
