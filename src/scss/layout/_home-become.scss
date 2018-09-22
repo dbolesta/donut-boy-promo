@@ -97,7 +97,9 @@
             .the-cast {
                 justify-content: space-around;
                 align-items: flex-start;
-                
+                /*width: 95%;
+                margin: auto;*/
+                flex-wrap: nowrap;
                 
                 .cast-actor {
                     display: flex;

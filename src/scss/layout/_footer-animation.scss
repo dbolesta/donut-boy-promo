@@ -21,6 +21,10 @@
         top: -48px;
         z-index: 99;
         width: 50px;
+        
+        /*@include respond-to(small){
+            width: 50px;
+        }*/
     }
 
     .kelly-footer {
@@ -28,6 +32,10 @@
         top: -48px;
         z-index: 99;
         width: 50px;
+        
+        /*@include respond-to(small){
+            width: 50px;
+        }*/
     }
 
     
@@ -73,19 +81,29 @@
     position: absolute;
     bottom: -220px;
     left: 35%;
+    display: none;
+    
+    @include respond-to(small){
+        display: block;
+    }
 }
 
 
 .beach-tree {
     position: absolute;
     bottom: -320px;
-    left: 15%;
+    left: 10%;
+    
+    @include respond-to(small){
+        left: 15%;
+    }
 }
 
 .beach-castle {
     position: absolute;
     right: -25px;    
-    width: 50%;
+    //width: 50%;
+    width: 225px;
     bottom:-390px;
     
     @include respond-to(small){
@@ -96,21 +114,34 @@
 .beach-crab {
     position: absolute;
     bottom: -40px;
-    left: 30%; 
+    left: 8%; 
     animation: crabWalk 7s linear infinite;
+    
+    @include respond-to(small){
+        left: 30%;
+    }
 }
 
 .beach-ship {
     position: absolute;
     bottom: -140px;
-    left: 62%; 
+    left: 62%;
+    display: none;
+    
+    @include respond-to(small){
+        display: block;
+    }
 }
 
 .beach-gull {
     position: absolute;
     bottom: -100px;
     left: 12%; 
-    animation: gullFly 15s linear infinite;
+    animation: gullFly 7s linear infinite;
+   
+    @include respond-to(small){
+        animation: gullFly 15s linear infinite;
+    }
 }
 
 
@@ -142,11 +173,20 @@
     position: absolute;
     bottom: -70px;
     left: 2%; 
+    display: none;
+    
+    @include respond-to(small){
+        display: block;
+    }
 }
 .beach-shell {
     position: absolute;
     bottom: -70px;
-    left: 62%; 
+    left: 45%; 
+    
+     @include respond-to(small){
+        left: 62%;
+    }
 }
 
 
@@ -199,8 +239,8 @@
 @keyframes gullFly {
     0%{margin-left: 0px; transform: scaleX(-1); animation-timing-function: steps(1, end);}
     0.1% {margin-left: 0px;  transform: scaleX(1); }
-    50% {margin-left: 600px;  transform: scaleX(1); animation-timing-function: steps(1, end);}
-    50.1% {margin-left: 600px;  transform: scaleX(-1);}
+    50% {margin-left: /*600px*/ 40%;  transform: scaleX(1); animation-timing-function: steps(1, end);}
+    50.1% {margin-left: /*600px*/ 40%;  transform: scaleX(-1);}
     100%{margin-left: 0px;  transform: scaleX(-1);}      
 }
 

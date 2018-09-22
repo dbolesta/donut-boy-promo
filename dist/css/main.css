@@ -888,7 +888,11 @@ h2 {
         justify-content: space-around;
         -webkit-box-align: start;
         -ms-flex-align: start;
-        align-items: flex-start; }
+        align-items: flex-start;
+        /*width: 95%;
+                margin: auto;*/
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap; }
         .become .become-text .become-content .the-cast .cast-actor {
           display: -webkit-box;
           display: -ms-flexbox;
@@ -1531,12 +1535,18 @@ footer {
     position: absolute;
     top: -48px;
     z-index: 99;
-    width: 50px; }
+    width: 50px;
+    /*@include respond-to(small){
+            width: 50px;
+        }*/ }
   .beach-floor .kelly-footer {
     position: absolute;
     top: -48px;
     z-index: 99;
-    width: 50px; }
+    width: 50px;
+    /*@include respond-to(small){
+            width: 50px;
+        }*/ }
   .beach-floor .beach-top {
     background: url(/imgs/tile3.png) repeat-x left bottom;
     height: 25px;
@@ -1571,17 +1581,24 @@ footer {
 .beach-dock {
   position: absolute;
   bottom: -220px;
-  left: 35%; }
+  left: 35%;
+  display: none; }
+  @media (min-width: 725px) {
+    .beach-dock {
+      display: block; } }
 
 .beach-tree {
   position: absolute;
   bottom: -320px;
-  left: 15%; }
+  left: 10%; }
+  @media (min-width: 725px) {
+    .beach-tree {
+      left: 15%; } }
 
 .beach-castle {
   position: absolute;
   right: -25px;
-  width: 50%;
+  width: 225px;
   bottom: -390px; }
   @media (min-width: 725px) {
     .beach-castle {
@@ -1590,21 +1607,32 @@ footer {
 .beach-crab {
   position: absolute;
   bottom: -40px;
-  left: 30%;
+  left: 8%;
   -webkit-animation: crabWalk 7s linear infinite;
   animation: crabWalk 7s linear infinite; }
+  @media (min-width: 725px) {
+    .beach-crab {
+      left: 30%; } }
 
 .beach-ship {
   position: absolute;
   bottom: -140px;
-  left: 62%; }
+  left: 62%;
+  display: none; }
+  @media (min-width: 725px) {
+    .beach-ship {
+      display: block; } }
 
 .beach-gull {
   position: absolute;
   bottom: -100px;
   left: 12%;
-  -webkit-animation: gullFly 15s linear infinite;
-  animation: gullFly 15s linear infinite; }
+  -webkit-animation: gullFly 7s linear infinite;
+  animation: gullFly 7s linear infinite; }
+  @media (min-width: 725px) {
+    .beach-gull {
+      -webkit-animation: gullFly 15s linear infinite;
+      animation: gullFly 15s linear infinite; } }
 
 .beach-cloud {
   position: absolute;
@@ -1633,12 +1661,19 @@ footer {
 .beach-rock {
   position: absolute;
   bottom: -70px;
-  left: 2%; }
+  left: 2%;
+  display: none; }
+  @media (min-width: 725px) {
+    .beach-rock {
+      display: block; } }
 
 .beach-shell {
   position: absolute;
   bottom: -70px;
-  left: 62%; }
+  left: 45%; }
+  @media (min-width: 725px) {
+    .beach-shell {
+      left: 62%; } }
 
 .db-backwards {
   -webkit-transform: scaleX(-1);
@@ -1748,13 +1783,13 @@ footer {
     -webkit-transform: scaleX(1);
     transform: scaleX(1); }
   50% {
-    margin-left: 600px;
+    margin-left: 40%;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
     -webkit-animation-timing-function: steps(1, end);
     animation-timing-function: steps(1, end); }
   50.1% {
-    margin-left: 600px;
+    margin-left: 40%;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1); }
   100% {
@@ -1774,13 +1809,13 @@ footer {
     -webkit-transform: scaleX(1);
     transform: scaleX(1); }
   50% {
-    margin-left: 600px;
+    margin-left: 40%;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
     -webkit-animation-timing-function: steps(1, end);
     animation-timing-function: steps(1, end); }
   50.1% {
-    margin-left: 600px;
+    margin-left: 40%;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1); }
   100% {
