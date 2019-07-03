@@ -25,5 +25,7 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-sass": "^4.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "natives": "^1.1.6"
+  }
 }
