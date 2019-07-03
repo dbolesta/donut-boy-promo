@@ -21,24 +21,24 @@ gulp.task("sass", function() {
 });
 
 // Copy ALL HTML files
-gulp.task("copyHtml", function() {
+gulp.task("copyHtml", async function() {
   gulp.src("src/*.html").pipe(gulp.dest("dist"));
 });
 
 // concat scrips
-gulp.task("vendorScripts", function() {
+gulp.task("vendorScripts", async function() {
   gulp
     .src("src/js/vendor/*.js")
     .pipe(concat("vendorScripts.js"))
     .pipe(gulp.dest("dist/js"));
 });
-gulp.task("pluginScripts", function() {
+gulp.task("pluginScripts", async function() {
   gulp
     .src("src/js/plugins/*.js")
     .pipe(concat("pluginScripts.js"))
     .pipe(gulp.dest("dist/js"));
 });
-gulp.task("scripts", function() {
+gulp.task("scripts", async function() {
   gulp
     .src("src/js/*.js")
     .pipe(concat("scripts.js"))
@@ -54,7 +54,7 @@ gulp.task("imageMin", () =>
 );
 
 // Copy audio files
-gulp.task("copyAudio", function() {
+gulp.task("copyAudio", async function() {
   gulp.src("src/audio/*").pipe(gulp.dest("dist/audio"));
 });
 
