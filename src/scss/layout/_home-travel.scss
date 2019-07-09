@@ -1,86 +1,87 @@
 .travel {
-    background: url("/imgs/levelBeach2.png");
-    background-size:cover;
-    background-position: left;
-    background-repeat: no-repeat;
-    
-    min-height: 549px;
-    background-color: #CAAEEB;
-    position: relative;
-    
-    
-    .section-title {
-        padding-top: 5vh;
-    }
-    
-    .travel-menu {
-        ul {
-            list-style-type: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 0 1em;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            
-            
-            li {
-                color: white;
-                @include stroke(black, 0.5px);
-                //padding: 4px 7px;
-                background: lightblue;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 2px;
-                //padding-right: 9px;
-                cursor: pointer;
-                transition: all ease-in-out 150ms;
-                box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-                
-                span {
-                    display: none;
-                    padding-right: 0px;
-                    @include respond-to(small) {
-                        display: inline;
-                        padding-right: 9px;
-                    }
-                }
-                
-                &:hover {
-                    transform: translateY(-1px);
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                }
-                
-                
-                i {
-                    margin-right: 0px;
-                    transition: background ease-in-out 150ms;
-                    background: darken(lightblue, 50%);
-                    border-radius: 2px;
-                    /*display: flex;
+  background-image: url("/imgs/levelBeach2.png");
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+
+  min-height: 549px;
+  background-color: #caaeeb;
+  position: relative;
+
+  opacity: 0.2;
+
+  transition: all 200ms;
+
+  &.selected-image {
+    opacity: 1;
+  }
+
+  .section-title {
+    padding-top: 5vh;
+  }
+
+  .travel-menu {
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 0 1em;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      li {
+        color: white;
+        @include stroke(black, 0.5px);
+        //padding: 4px 7px;
+        background: lightblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+        //padding-right: 9px;
+        cursor: pointer;
+        transition: all ease-in-out 150ms;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+        span {
+          display: none;
+          padding-right: 0px;
+          @include respond-to(small) {
+            display: inline;
+            padding-right: 9px;
+          }
+        }
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        i {
+          margin-right: 0px;
+          transition: background ease-in-out 150ms;
+          background: darken(lightblue, 50%);
+          border-radius: 2px;
+          /*display: flex;
                     align-items: center;
                     justify-content: center;*/
-                    padding: 9px;
-                    
-                    @include respond-to(small) {
-                        margin-right: 9px;
-                        border-radius: 2px 0 0 2px;
-                    }
-                }
-                
-                
-                &.selected {
-                    i {
-                        background: $gold;
-                    }
-                }
-                
-            }
+          padding: 9px;
+
+          @include respond-to(small) {
+            margin-right: 9px;
+            border-radius: 2px 0 0 2px;
+          }
         }
-        
+
+        &.selected {
+          i {
+            background: $gold;
+          }
+        }
+      }
     }
-    
+  }
 }

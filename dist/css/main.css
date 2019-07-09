@@ -657,7 +657,7 @@ h2 {
         .hero .hero-text h3 {
           font-size: 1.5rem;
           text-shadow: -2px -2px 0 black, 0 -2px 0 black, 2px -2px 0 black, 2px 0 0 black, 2px 2px 0 black, 0 2px 0 black, -2px 2px 0 black, -2px 0 0 black; } }
-      .hero .hero-text h3 span {
+      .hero .hero-text h3 span.header-asterisk {
         cursor: pointer;
         font-size: 0.5em;
         vertical-align: text-bottom; }
@@ -678,7 +678,7 @@ h2 {
         margin-bottom: 0;
         margin-top: 10px; }
         .hero .hero-text .info-box ul li:before {
-          content: '•';
+          content: "•";
           margin-right: 0.5em; }
       .hero .hero-text .info-box .info-x {
         position: absolute;
@@ -737,13 +737,18 @@ h2 {
       font-size: 18px; }
 
 .travel {
-  background: url("/imgs/levelBeach2.png");
+  background-image: url("/imgs/levelBeach2.png");
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
   min-height: 549px;
-  background-color: #CAAEEB;
-  position: relative; }
+  background-color: #caaeeb;
+  position: relative;
+  opacity: 0.2;
+  -webkit-transition: all 200ms;
+  transition: all 200ms; }
+  .travel.selected-image {
+    opacity: 1; }
   .travel .section-title {
     padding-top: 5vh; }
   .travel .travel-menu ul {
@@ -1034,7 +1039,7 @@ h2 {
           .assets .asset-display .asset-info .asset-text ul li {
             text-indent: -0.8em; }
             .assets .asset-display .asset-info .asset-text ul li:before {
-              content: '•';
+              content: "•";
               margin-right: 0.5em; }
             .assets .asset-display .asset-info .asset-text ul li:first-child {
               margin-bottom: 0.75em; }
@@ -1053,9 +1058,7 @@ h2 {
       overflow: hidden;
       background-color: #444;
       -webkit-box-shadow: inset 0px 0px 10px 0px black;
-      box-shadow: inset 0px 0px 10px 0px black;
-      -webkit-transition: translate ease-in-out 150ms;
-      transition: translate ease-in-out 150ms; }
+      box-shadow: inset 0px 0px 10px 0px black; }
       .assets .overflow-sidescroll .sidescroll div {
         min-width: 75px;
         height: 75px;

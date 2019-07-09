@@ -1,140 +1,120 @@
 .hero {
-    color: $text-inverse;
-    //padding-top: 8em;
-    padding-bottom: 8em;
+  color: $text-inverse;
+  //padding-top: 8em;
+  padding-bottom: 8em;
+  text-align: center;
+  position: relative;
+
+  background: url(../imgs/hero-hills.png) repeat-x left bottom;
+  background-size: 13rem;
+  min-height: 200px;
+
+  @include respond-to(small) {
+    text-align: left;
+    padding-bottom: 0;
+    height: 80vmin;
+    min-height: 800px;
+    background-size: auto;
+  }
+
+  .hero-text {
     text-align: center;
+    margin-top: 10vmax;
     position: relative;
-    
-    background:url(../imgs/hero-hills.png) repeat-x left bottom;
-    background-size: 13rem;
-    min-height: 200px;
-    
-    @include respond-to(small) {
-        text-align: left;
-        padding-bottom: 0;
-        height: 80vmin;
-        min-height: 800px;
-        background-size: auto;
+
+    h1 {
+      font-size: 2.5rem;
+      font-family: $font-vg1;
+      letter-spacing: 0px;
+      margin-bottom: 0.4em;
+      text-align: center;
+      @include stroke(black, 1px);
+
+      @include respond-to(small) {
+        font-size: 5rem;
+        @include stroke(black, 2px);
+      }
     }
-    
 
-    .hero-text {
-        text-align: center;
-        margin-top: 10vmax;
-        position:relative;
+    h3 {
+      font-size: 1rem;
+      line-height: 1.5em;
+      font-family: $font-vg2;
+      letter-spacing: 0px;
+      text-align: center;
+      @include stroke(black, 1px);
 
-        h1 {
-            font-size: 2.5rem;
-            font-family: $font-vg1;
-            letter-spacing: 0px;
-            margin-bottom: 0.4em;
-            text-align: center;
-            @include stroke(black, 1px);
+      @include respond-to(small) {
+        font-size: 1.5rem;
+        @include stroke(black, 2px);
+      }
 
-            @include respond-to(small){
-                font-size: 5rem;
-                @include stroke(black, 2px);
-            }
+      span.header-asterisk {
+        //text-decoration: underline;
+        cursor: pointer;
+        font-size: 0.5em;
+        vertical-align: text-bottom;
+      }
+    } // end h3
+
+    .info-box {
+      opacity: 0;
+      transition: opacity ease-in-out 150ms;
+      position: relative;
+      //font-family: "Press Start 2P";
+      display: inline-block;
+      padding: 10px;
+      text-align: left;
+      min-width: 137px;
+      @include stroke(black, 1px);
+
+      p {
+        //margin-top: 1em;
+      }
+
+      ul {
+        padding-left: 0;
+        list-style-position: inside;
+        list-style-type: none;
+        margin-bottom: 0;
+        margin-top: 10px;
+
+        li:before {
+          content: "•";
+          margin-right: 0.5em;
         }
+      }
 
-        h3 {
-            font-size: 1rem;
-            line-height: 1.5em;
-            font-family: $font-vg2;
-            letter-spacing: 0px;
-            text-align: center;
-            @include stroke(black, 1px);
+      .info-x {
+        position: absolute;
+        top: 3px;
+        right: 5px;
+        padding: 5px;
+        cursor: pointer;
+      }
+    } // end .info-box
 
-            @include respond-to(small){
-                font-size: 1.5rem;
-                @include stroke(black, 2px);
-            }
+    .is-showing {
+      opacity: 1;
+    }
+  } // end .hero-text
 
-            span {
-                //text-decoration: underline;
-                cursor: pointer;
-                font-size: 0.5em;
-                vertical-align: text-bottom;
-            }
-        } // end h3
+  .trailer-container {
+    text-align: center;
+    margin-top: 2.5em;
 
+    h3 {
+      @include stroke(black, 0.5px);
+    }
 
-        .info-box {
-            opacity: 0;
-            transition: opacity ease-in-out 150ms;
-            position: relative;
-            //font-family: "Press Start 2P";
-            display: inline-block;
-            padding: 10px;
-            text-align: left;
-            min-width: 137px;
-            @include stroke(black, 1px);
+    iframe {
+      width: 350px;
+      height: 197px;
 
-
-
-            p {
-                //margin-top: 1em;
-            }
-
-            ul {
-                padding-left: 0;
-                list-style-position: inside;
-                list-style-type: none;
-                margin-bottom: 0;
-                margin-top: 10px;
-
-                li:before {
-                    content: '•';
-                    margin-right: 0.5em;
-                }
-            }
-
-            .info-x {
-                position: absolute;
-                top: 3px;
-                right: 5px;
-                padding: 5px;
-                cursor: pointer;
-            }
-
-
-
-        } // end .info-box
-
-        .is-showing {
-            opacity: 1;
-        }
-
-    } // end .hero-text
-    
-    
-    
-    
-    .trailer-container {
-        text-align: center;
-        margin-top: 2.5em;
-        
-        h3 {
-            @include stroke(black, 0.5px);
-            
-        }
-        
-        iframe {
-            width: 350px;
-            height: 197px; 
-            
-            @include respond-to(small) {
-                
-                width: 560px;
-                height: 315px; 
-                
-            }
-        }
-    } // end .trailer-container
-
-    
-    
-    
-    
+      @include respond-to(small) {
+        width: 560px;
+        height: 315px;
+      }
+    }
+  } // end .trailer-container
 } // end .hero
-
