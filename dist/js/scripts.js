@@ -613,6 +613,7 @@ function removeTravelImage(e) {
 function replaceTravelImage(img) {
   DOM.travel.style.backgroundImage = `url(/imgs/${travelImg})`;
   DOM.travel.classList.add("selected-image");
+  console.log(`url(/imgs/${travelImg})`);
 }
 
 // update position of damon to get closer to kelly in relation with screen scroll percentage
