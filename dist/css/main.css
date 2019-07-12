@@ -816,7 +816,7 @@ h2 {
 .become {
   padding: 10vh 0 48px;
   position: relative;
-  background: url("/imgs/tile1.png") repeat;
+  background: url("imgs/tile1.png") repeat;
   -webkit-box-align: end;
   -ms-flex-align: end;
   align-items: flex-end;

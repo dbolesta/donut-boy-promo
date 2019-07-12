@@ -1,166 +1,144 @@
 .become {
-    padding: 10vh 0 48px;
-    position: relative;
-    background: url("/imgs/tile1.png") repeat;
+  padding: 10vh 0 48px;
+  position: relative;
+  background: url("imgs/tile1.png") repeat;
+  align-items: flex-end;
+  z-index: -2; // this is so donut lines can appear behind dough nutter machine, but above this base section
+
+  .become-bottom {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("/imgs/tile2.png") repeat-x left bottom;
+  }
+
+  .grid {
     align-items: flex-end;
-    z-index: -2; // this is so donut lines can appear behind dough nutter machine, but above this base section
-    
-    
-    
-    
-    
-    .become-bottom {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: url("/imgs/tile2.png") repeat-x left bottom;
-    }
-    
-    .grid {
-        align-items: flex-end;
-    }
-    
-    
-    
-    .donut-line {
-        margin: auto;
-        display: flex;
-        position: relative;
-        left: -20px;
-        bottom: -24px;
-        justify-content: center;
-        z-index: -1; // so they appear behind machine
+  }
+
+  .donut-line {
+    margin: auto;
+    display: flex;
+    position: relative;
+    left: -20px;
+    bottom: -24px;
+    justify-content: center;
+    z-index: -1; // so they appear behind machine
+  }
+
+  .nut-line {
+    background: url("/imgs/donutLine.png") repeat-y;
+    height: 445px;
+    width: 70px;
+
+    &.nut-1 {
+      transform: rotate(-9deg);
+      position: relative;
+      right: -21px;
+      height: 440px;
+      bottom: -5px;
+      border-top-left-radius: 20px;
+      animation: slide 1s linear infinite;
     }
 
-    .nut-line {
-      background: url("/imgs/donutLine.png") repeat-y;
-      height: 445px;
-      width: 70px;
-        
-        
-        &.nut-1 {
-            transform: rotate(-9deg);
-            position: relative;
-            right: -21px;
-            height: 440px;
-            bottom: -5px;
-            border-top-left-radius: 20px;
-            animation: slide 1s linear infinite;
-            
-        }
-        
-        
-        &.nut-2 {
-            animation: slide2 1s linear infinite;
-        }
-        
-        
-        &.nut-3 {
-            transform: rotate(9deg);
-            position: relative;
-            left: -21px;
-            height: 440px;
-            bottom: -5px;
-            border-top-right-radius: 20px;
-            animation: slide3 1s linear infinite;
-        }
-        
+    &.nut-2 {
+      animation: slide2 1s linear infinite;
     }
-    
-    
 
-    .become-text {
-        align-self: flex-start;
-        color: white;
-        position: absolute;
-        left: 0;
-        right: 0;
-        
-        @include respond-to(small){
-            position: static;
-        }
-        
-        
-        .become-content {
-            padding: 0 10%;
-            
-            p {
-                font-size: 1.3rem;
-                @include stroke(black, 1px);
-                text-align: left;
-                /*padding: 0 10em;*/
-            }
+    &.nut-3 {
+      transform: rotate(9deg);
+      position: relative;
+      left: -21px;
+      height: 440px;
+      bottom: -5px;
+      border-top-right-radius: 20px;
+      animation: slide3 1s linear infinite;
+    }
+  }
 
+  .become-text {
+    align-self: flex-start;
+    color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
 
-            .the-cast {
-                justify-content: space-around;
-                align-items: flex-start;
-                /*width: 95%;
+    @include respond-to(small) {
+      position: static;
+    }
+
+    .become-content {
+      padding: 0 10%;
+
+      p {
+        font-size: 1.3rem;
+        @include stroke(black, 1px);
+        text-align: left;
+        /*padding: 0 10em;*/
+      }
+
+      .the-cast {
+        justify-content: space-around;
+        align-items: flex-start;
+        /*width: 95%;
                 margin: auto;*/
-                flex-wrap: nowrap;
-                
-                .cast-actor {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    max-width: 38%;
-                    padding: 1em;
-                    
-                    @include respond-to(small){
-                        max-width: none;
-                    }
-                    
-                    
-                    img {
+        flex-wrap: nowrap;
 
-                       // max-width: 75%;
-                    }
-                    
+        .cast-actor {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          max-width: 38%;
+          padding: 1em;
 
+          @include respond-to(small) {
+            max-width: none;
+          }
 
+          img {
+            // max-width: 75%;
+          }
 
-                    p {
-                        text-align: center;
-                        font-size: 0.7rem;
-                        font-family: $font-vg2;
-                        
-                        @include respond-to(small){
-                            font-size: 0.8rem;
-                        }
-                    }
-                    
-                    
-                    
-                    
-                    
-                } // end .cast-actor
-            } // end .the-cast
-        } // end .become-content
-        
-    }
-    
-    
-} 
+          p {
+            text-align: center;
+            font-size: 0.7rem;
+            font-family: $font-vg2;
 
-@keyframes slide{
-    
-  0%{background-position: 0 445px;}
-    100%{background-position: 0 0;}   
-    
-}
-@keyframes slide2{
-    
-  0%{background-position: 0 345px;}
-    100%{background-position: 0 -100px;}   
-    
+            @include respond-to(small) {
+              font-size: 0.8rem;
+            }
+          }
+        } // end .cast-actor
+      } // end .the-cast
+    } // end .become-content
+  }
 }
 
-@keyframes slide3{
-    
-  0%{background-position: 0 245px;}
-    100%{background-position: 0 -200px;}   
-    
+@keyframes slide {
+  0% {
+    background-position: 0 445px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@keyframes slide2 {
+  0% {
+    background-position: 0 345px;
+  }
+  100% {
+    background-position: 0 -100px;
+  }
+}
+
+@keyframes slide3 {
+  0% {
+    background-position: 0 245px;
+  }
+  100% {
+    background-position: 0 -200px;
+  }
 }
