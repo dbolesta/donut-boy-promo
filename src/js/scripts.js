@@ -296,7 +296,7 @@ function assetClick(el) {
   let imageName;
   if (assetContainer.classList.contains("enemy-display")) {
     imageName = image.match(/imgs\/(.*)\.png/)[1];
-    imageName = `/imgs/${imageName}.gif`;
+    imageName = `./imgs/${imageName}.gif`;
   } else {
     imageName = image;
   }
