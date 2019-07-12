@@ -1,73 +1,65 @@
 // for sidecrolling asset selector
 
 .btn-game {
-   background-color: #949494;
-   box-sizing: border-box;
-   border-top: 2px solid #B0B0B0; 
-   border-left: 2px solid #B0B0B0; 
-   border-right: 2px solid #7A7A7A; 
-   border-bottom: 2px solid #7A7A7A; 
-   border-radius: 3px;
-   cursor: pointer;
-   transition: all ease-in-out 50ms;
-   user-select: none; // prevent text from highlighting
+  background-color: #949494;
+  box-sizing: border-box;
+  border-top: 2px solid #b0b0b0;
+  border-left: 2px solid #b0b0b0;
+  border-right: 2px solid #7a7a7a;
+  border-bottom: 2px solid #7a7a7a;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all ease-in-out 50ms;
+  user-select: none; // prevent text from highlighting
 }
 
 .btn-scroll {
-    width: 25px;
-    display: flex;
-    padding: 1em;
-    justify-content: center;
-    align-items: center;
+  width: 25px;
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-scroll--left {
-   transform: rotate(180deg);
-   border-top: 2px solid #7A7A7A; 
-   border-left: 2px solid #7A7A7A; 
-   border-right: 2px solid #B0B0B0; 
-   border-bottom: 2px solid #B0B0B0; 
-    
-    &:hover:not(.btn-game--disabled) {
-        border-top-color: darken(#7A7A7A, 10%);
-        border-left-color: darken(#7A7A7A, 10%);
-        border-right-color: darken(#B0B0B0, 10%);
-        border-bottom-color: darken(#B0B0B0, 10%);
-        background-color: darken(#949494, 10%);
-    }   
-    &:active:not(.btn-game--disabled) {
-        transform: rotate(180deg) translateY(-1px);
-    }   
-    
+  transform: rotate(180deg);
+  border-top: 2px solid #7a7a7a;
+  border-left: 2px solid #7a7a7a;
+  border-right: 2px solid #b0b0b0;
+  border-bottom: 2px solid #b0b0b0;
+
+  &:hover:not(.btn-game--disabled) {
+    border-top-color: darken(#7a7a7a, 10%);
+    border-left-color: darken(#7a7a7a, 10%);
+    border-right-color: darken(#b0b0b0, 10%);
+    border-bottom-color: darken(#b0b0b0, 10%);
+    background-color: darken(#949494, 10%);
+  }
+  &:active:not(.btn-game--disabled) {
+    transform: rotate(180deg) translateY(-1px);
+  }
 }
 
-
 .btn-scroll--right {
-    
-    &:hover:not(.btn-game--disabled) {
-        border-top-color: darken(#B0B0B0, 10%);
-        border-left-color: darken(#B0B0B0, 10%);
-        border-right-color: darken(#7A7A7A, 10%);
-        border-bottom-color: darken(#7A7A7A, 10%);
-        background-color: darken(#949494, 10%);
-    }  
-    &:active:not(.btn-game--disabled) {
-        transform: translateY(1px);
-    } 
-    
+  &:hover:not(.btn-game--disabled) {
+    border-top-color: darken(#b0b0b0, 10%);
+    border-left-color: darken(#b0b0b0, 10%);
+    border-right-color: darken(#7a7a7a, 10%);
+    border-bottom-color: darken(#7a7a7a, 10%);
+    background-color: darken(#949494, 10%);
+  }
+  &:active:not(.btn-game--disabled) {
+    transform: translateY(1px);
+  }
 }
 
 .btn-game--disabled {
-    //opacity: 0.8;
-    color: rgba(255, 255, 255, 0.1);
-    background-color: darken(#949494, 20%);
-    border-color: transparent;
-    cursor: default;
+  //opacity: 0.8;
+  color: rgba(255, 255, 255, 0.1);
+  background-color: darken(#949494, 20%);
+  border-color: transparent;
+  cursor: default;
 }
-
-
-
-
 
 // end game button stuff
 
@@ -84,55 +76,67 @@
   transition: all 150ms;
 }
 
-
-
 /*.btn--play {
     @include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
     //@include btn-border-drawing;
 }*/
 
 .btn--play {
-    font-size: 2rem;    
-    border-width: 10px;
-    border-bottom-width: 10px;
-    display: inline-block;
+  font-size: 2rem;
+  /*border-width: 10px;*/
+  display: inline-block;
+  //background-color: #798cc7;
+  background-color: #4b8eff;
+  color: white;
+  border-color: black;
+  // background: linear-gradient(
+  //   to right,
+  //   hsl(218, 100%, 65%),
+  //   hsl(218, 100%, 50%)
+  // );
+  text-shadow: 0 1px 3px #798cc7;
+  //border-color: #e8a9b0;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.15s ease;
+  //@include btn-border-drawing(#e8a9b0, #fdacaf, 2px, bottom, right);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
+      0 3px 6px rgba(0, 0, 0, 0.08);
+  }
 }
 
-
-
 .btn--primary {
-  $color: #FDACAF;
+  $color: #fdacaf;
   color: $color;
-  background-color: adjust-hue($color,180);
-  font-size: 2rem;    
+  background-color: adjust-hue($color, 180);
+  font-size: 2rem;
   border-width: 10px;
   border-bottom-width: 10px;
-    display: inline-block;
-    
-    
-  
+  display: inline-block;
+
   /*&:hover {
     animation: sawtooth 0.35s infinite linear;
     background: linear-gradient(45deg, $color 0.5em, transparent 0.5em) 0 0 / 1em 1em
               , linear-gradient(-45deg, $color 0.5em, transparent 0.5em) 0 0 / 1em 1em;
     color: adjust-hue($color,180);
   }*/
-    
-    
+
   &:hover {
     animation: sawtooth 0.55s infinite linear;
-    background: radial-gradient(circle, adjust-hue($color,180) 0.2em, transparent 0.25em) 0 0 / 1.25em 1.25em;
-    color: adjust-hue($color,180);
+    background: radial-gradient(
+        circle,
+        adjust-hue($color, 180) 0.2em,
+        transparent 0.25em
+      )
+      0 0 / 1.25em 1.25em;
+    color: adjust-hue($color, 180);
     background-color: $color;
   }
-    
-    
-    
 }
-
-
-
-
 
 @keyframes sawtooth {
   100% {

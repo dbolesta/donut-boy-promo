@@ -1,220 +1,226 @@
-/// This code is responsible for the footer elements sliding up at variable speeds when 
+/// This code is responsible for the footer elements sliding up at variable speeds when
 // the user scrolls to the bottom of the page
-// we calculate the footer percentage, then control the 'bottom' style of 
+// we calculate the footer percentage, then control the 'bottom' style of
 // all of the images and divs in the footer
-
 
 // bless this question:
 // https://stackoverflow.com/questions/33859522/how-much-of-an-element-is-visible-in-viewport
 
-(function ($) {
-    'use strict';
-    var results = {};
-    var footer$ = $(document.querySelector('footer'));
+(function($) {
+  "use strict";
+  var results = {};
+  var footer$ = $(document.querySelector("footer"));
 
-    
-    // debug: used for showing the % of footer on screen
-    function display() {
-        var resultString = '';
+  // debug: used for showing the % of footer on screen
+  function display() {
+    var resultString = "";
 
-        $.each(results, function (key) {
-            resultString += '(' + key + ': ' + Math.round(results[key]) + '%)';
-        });
+    $.each(results, function(key) {
+      resultString +=
+        "(" + key + ": " + Math.round(results[key]) + "%)";
+    });
 
-        $('#result').text(resultString);
+    // jank quick addition to show play button when scrolled down all the way
+    if (calculateVisibilityForFooter() > 85) {
+      $(".footer-button-container").fadeIn();
+    } else {
+      $(".footer-button-container").fadeOut();
     }
 
-    // where we actually figure out and calculate percentage of footer on screen
-    function calculateVisibilityForFooter() {
-        var windowHeight = $(window).height(),
-            docScroll = $(document).scrollTop(),
-            footerHeight = footer$.height(),
-            footerPosition = footer$.offset().top,
-            // Hidden before = Ammount of div hidden by the TOP of the window
-            // Hidden after = Ammount of div hidden by the BOTTOM of the window
-            //hiddenBefore = docScroll - footerPosition,
-            hiddenAfter = (footerPosition + footerHeight) - (docScroll + windowHeight);
-        
-        
-        if ((docScroll > footerPosition + footerHeight) || (footerPosition > docScroll + windowHeight)) {
-            return 0;
-        } else {
-            var result = 100;
-            
-            // BY HIDING THIS BLOCK, THIS CODE WILL RETURN THE PERCENTAGE UNTIL THE BOTTOM OF 
-            // FOOTER HAS HIT THE BOTTOM OF THE WINDOW, ONCE THE FOOTER IS WITHIN THE WINDOW
-            /*if (hiddenBefore > 0) {
+    $("#result").text(resultString);
+  }
+
+  // where we actually figure out and calculate percentage of footer on screen
+  function calculateVisibilityForFooter() {
+    var windowHeight = $(window).height(),
+      docScroll = $(document).scrollTop(),
+      footerHeight = footer$.height(),
+      footerPosition = footer$.offset().top,
+      // Hidden before = Ammount of div hidden by the TOP of the window
+      // Hidden after = Ammount of div hidden by the BOTTOM of the window
+      //hiddenBefore = docScroll - footerPosition,
+      hiddenAfter =
+        footerPosition + footerHeight - (docScroll + windowHeight);
+
+    if (
+      docScroll > footerPosition + footerHeight ||
+      footerPosition > docScroll + windowHeight
+    ) {
+      return 0;
+    } else {
+      var result = 100;
+
+      // BY HIDING THIS BLOCK, THIS CODE WILL RETURN THE PERCENTAGE UNTIL THE BOTTOM OF
+      // FOOTER HAS HIT THE BOTTOM OF THE WINDOW, ONCE THE FOOTER IS WITHIN THE WINDOW
+      /*if (hiddenBefore > 0) {
                 result -= (hiddenBefore * 100) / footerHeight;
             }*/
 
-            if (hiddenAfter > 0) {
-                result -= (hiddenAfter * 100) / footerHeight;
-            }
-            
-            return result;
-            
-        }
-        
-    }
-    
-    // debug: used to show percentage on top of screen
-    function calculateAndDisplayFooter() {
-        results[footer$.attr('id')] = calculateVisibilityForFooter();
-        display();
-    }
-    
-    
-    
-    // we create an array of all of our 'actors' in the footer
-    // all actors will have a `data-anim-start` and `data-anim-end` attribute,
-    // so we can assume all elems with a '[data-anim-start]' will be an actor
-    var animActors = [];
-    
-    $('[data-anim-start]').each(function(){
-        // we collect the necessary info: the elem itself, and start and end positions
-        animActors.push({
-            elem: this,
-            start: this.dataset.animStart,
-            end: this.dataset.animEnd
-        });
-    });
-    
-    
-    // brain of the animation
-    function updateFooterAnim() {
-        
-        // we need the percentage calculation to base our math off
-        var footerVisibility = calculateVisibilityForFooter();
-        var actor;
-        var newPosition;
-        
-        for (var i = 0; i < animActors.length; i++) {
-            actor = animActors[i];
-            
-            // we take the final position that we want all actors to end up at (using 'bottom' style)
-            // and calculate the percentage difference of that final position relative to its start position
-            // ( ( %ofVisibleFooter / 100 ) * endPosition ) + startPosition
-            newPosition = ( Number((footerVisibility / 100) * actor.end)) + Number(actor.start);
-            $(actor.elem).css('bottom', newPosition+"px");
-            
-        }
-        
-    }
-    
-    
+      if (hiddenAfter > 0) {
+        result -= (hiddenAfter * 100) / footerHeight;
+      }
 
-    $(document).scroll(function () {
-        
-        // debug purposes, update % on scroll
-        calculateAndDisplayFooter();
-        
-        // this if statement checks to see if the footer is within the view of the window (with a 10px buffer). If it is, we update the position of all actors accordingly
-        if (($(window).scrollTop() + window.innerHeight) - document.querySelector('footer').offsetTop >= -10) {
-            updateFooterAnim();
-        }
-        
-        // this if statement is a SAFTEY CHECK. Without it, if you were to scroll up very quickly from the bottom of the page, the above if statement would not run, keeping the footer actors on screen
-        // what we do here is, if we are not in footer territory, check once to see if the first actor is in its starting position. If not, we update the positions of all actors, which will get all the elements back in their correct starting positions (off screen)
-        if (($(window).scrollTop() + window.innerHeight) - document.querySelector('footer').offsetTop < -10 &&
-           parseInt(animActors[0].start) < parseInt(animActors[0].elem.style.bottom)
-           ) {
-            updateFooterAnim();
-        }
-        
-        
-        
-        
-        
-    });
+      return result;
+    }
+  }
 
-    // debug
-   /* $(document).ready(function () {
+  // debug: used to show percentage on top of screen
+  function calculateAndDisplayFooter() {
+    results[footer$.attr("id")] = calculateVisibilityForFooter();
+    display();
+  }
+
+  // we create an array of all of our 'actors' in the footer
+  // all actors will have a `data-anim-start` and `data-anim-end` attribute,
+  // so we can assume all elems with a '[data-anim-start]' will be an actor
+  var animActors = [];
+
+  $("[data-anim-start]").each(function() {
+    // we collect the necessary info: the elem itself, and start and end positions
+    animActors.push({
+      elem: this,
+      start: this.dataset.animStart,
+      end: this.dataset.animEnd
+    });
+  });
+
+  // brain of the animation
+  function updateFooterAnim() {
+    // we need the percentage calculation to base our math off
+    var footerVisibility = calculateVisibilityForFooter();
+    var actor;
+    var newPosition;
+
+    for (var i = 0; i < animActors.length; i++) {
+      actor = animActors[i];
+
+      // we take the final position that we want all actors to end up at (using 'bottom' style)
+      // and calculate the percentage difference of that final position relative to its start position
+      // ( ( %ofVisibleFooter / 100 ) * endPosition ) + startPosition
+      newPosition =
+        Number((footerVisibility / 100) * actor.end) +
+        Number(actor.start);
+      $(actor.elem).css("bottom", newPosition + "px");
+    }
+  }
+
+  $(document).scroll(function() {
+    // debug purposes, update % on scroll
+    calculateAndDisplayFooter();
+
+    // this if statement checks to see if the footer is within the view of the window (with a 10px buffer). If it is, we update the position of all actors accordingly
+    if (
+      $(window).scrollTop() +
+        window.innerHeight -
+        document.querySelector("footer").offsetTop >=
+      -10
+    ) {
+      updateFooterAnim();
+    }
+
+    // this if statement is a SAFTEY CHECK. Without it, if you were to scroll up very quickly from the bottom of the page, the above if statement would not run, keeping the footer actors on screen
+    // what we do here is, if we are not in footer territory, check once to see if the first actor is in its starting position. If not, we update the positions of all actors, which will get all the elements back in their correct starting positions (off screen)
+    if (
+      $(window).scrollTop() +
+        window.innerHeight -
+        document.querySelector("footer").offsetTop <
+        -10 &&
+      parseInt(animActors[0].start) <
+        parseInt(animActors[0].elem.style.bottom)
+    ) {
+      updateFooterAnim();
+    }
+  });
+
+  // debug
+  /* $(document).ready(function () {
         calculateAndDisplayFooter();
     });*/
-    
-    
-    
-    
-    
-    
-    
-}(jQuery));
-var audio = $('.player').find("audio")[0];
+})(jQuery);
 
-$(document).ready(function(){
-      
-       var player = $('.player');
-       var _button = $(player).find('.btn-music');
-    
-       // find the audio tag 
-       //var audio = $(player).find("audio")[2];
-       var seekbarInner = $(player).find(".seek-bar .inner");
-       var seekbarOuter = $(player).find(".seek-bar .outer");
-       var volumeControl = $(player).find(".volume-control .volume-bar");
-    
-       var length;
-       var interval; // used to run setInterval Function
-       var seekbarPercentage;
-       var volumePercentage;
-    
-       var seekDrag = false; // for dragging seek position
-       var volumeDrag = false;
-       
-       ///----------  play song on click -----------///
-           
-   
-        // seekbar control
-        
-        $(document).on('mousedown', '.seek-bar .outer, .seek-handle', function (e) {
-              seekDrag = true;
-              updateSeekbar(e);
-        });
-        $(document).on('mouseup', function (e) {
-            if (seekDrag) {
-                seekDrag = false;
-                updateSeekbar(e);
-            }
-        });
-        $(document).on('mousemove', function (e) {
-            if (seekDrag) {
-                updateSeekbar(e);
-            }
-        });
-    
-    
-    
-        // volume control
-        $(document).on('mousedown', '.volume-control .outer, .volume-handle', function (e) {
-              volumeDrag = true;
-              updateVolume(e);
-        });
-        $(document).on('mouseup', function (e) {
-            if (volumeDrag) {
-                volumeDrag = false;
-                updateVolume(e);
-            }
-        });
-        $(document).on('mousemove', function (e) {
-            if (volumeDrag) {
-                updateVolume(e);
-            }
-        });
-    
-    
-         var updateVolume = function(e){
-            var volumePosition = e.pageX - volumeControl.offset().left;
-            var audioVolume = volumePosition / volumeControl.width();
+var audio = $(".player").find("audio")[0];
 
-            if(audioVolume >= 0 && audioVolume <= 1){
-                audio.volume = audioVolume;
-                volumeControl.find(".inner").css("width", audioVolume * 100 + "%");
-                $('.volume-bar .volume-handle').css("left", audioVolume * 100 + "%");
-            }
+$(document).ready(function() {
+  var player = $(".player");
+  var _button = $(player).find(".btn-music");
 
-        };
+  // find the audio tag
+  //var audio = $(player).find("audio")[2];
+  var seekbarInner = $(player).find(".seek-bar .inner");
+  var seekbarOuter = $(player).find(".seek-bar .outer");
+  var volumeControl = $(player).find(".volume-control .volume-bar");
 
-        // click for volume control
-        /*volumeControl.find(".outer").on('click', function(e){
+  var length;
+  var interval; // used to run setInterval Function
+  var seekbarPercentage;
+  var volumePercentage;
+
+  var seekDrag = false; // for dragging seek position
+  var volumeDrag = false;
+
+  ///----------  play song on click -----------///
+
+  // seekbar control
+
+  $(document).on(
+    "mousedown",
+    ".seek-bar .outer, .seek-handle",
+    function(e) {
+      seekDrag = true;
+      updateSeekbar(e);
+    }
+  );
+  $(document).on("mouseup", function(e) {
+    if (seekDrag) {
+      seekDrag = false;
+      updateSeekbar(e);
+    }
+  });
+  $(document).on("mousemove", function(e) {
+    if (seekDrag) {
+      updateSeekbar(e);
+    }
+  });
+
+  // volume control
+  $(document).on(
+    "mousedown",
+    ".volume-control .outer, .volume-handle",
+    function(e) {
+      volumeDrag = true;
+      updateVolume(e);
+    }
+  );
+  $(document).on("mouseup", function(e) {
+    if (volumeDrag) {
+      volumeDrag = false;
+      updateVolume(e);
+    }
+  });
+  $(document).on("mousemove", function(e) {
+    if (volumeDrag) {
+      updateVolume(e);
+    }
+  });
+
+  var updateVolume = function(e) {
+    var volumePosition = e.pageX - volumeControl.offset().left;
+    var audioVolume = volumePosition / volumeControl.width();
+
+    if (audioVolume >= 0 && audioVolume <= 1) {
+      audio.volume = audioVolume;
+      volumeControl
+        .find(".inner")
+        .css("width", audioVolume * 100 + "%");
+      $(".volume-bar .volume-handle").css(
+        "left",
+        audioVolume * 100 + "%"
+      );
+    }
+  };
+
+  // click for volume control
+  /*volumeControl.find(".outer").on('click', function(e){
 
             var volumePosition = e.pageX - $(this).offset().left;
             var audioVolume = volumePosition / $(this).width();
@@ -225,269 +231,227 @@ $(document).ready(function(){
 
             }
         });*/
-    
-    
-    $('.btn-forward').on('click', function(){
-        
-        var numOfSongs = $('.player audio').legnth;
-        
-        $('.player audio').each(function(index, value){
-           console.log(index, value); 
-            
-            if (audio == value){
-                var newIndex = index;
-                
-                if (index == 4){
-                    newIndex = -1;
-                }
-                
-                console.log(index, newIndex);
-                changeSong(newIndex + 1);
-                return false;
-            }
-        });
-        
+
+  $(".btn-forward").on("click", function() {
+    var numOfSongs = $(".player audio").legnth;
+
+    $(".player audio").each(function(index, value) {
+      console.log(index, value);
+
+      if (audio == value) {
+        var newIndex = index;
+
+        if (index == 4) {
+          newIndex = -1;
+        }
+
+        console.log(index, newIndex);
+        changeSong(newIndex + 1);
+        return false;
+      }
     });
-    
-    $('.btn-back').on('click', function(){
-        
-        var numOfSongs = $('.player audio').legnth;
-        
-        $('.player audio').each(function(index, value){
-           console.log(index, value); 
-            
-            if (audio == value){
-                var newIndex = index;
-                
-                if (index == 0){
-                    newIndex = 5;
-                }
-                
-                console.log(index, newIndex);
-                changeSong(newIndex - 1);
-                return false;
-            }
-        });
-        
+  });
+
+  $(".btn-back").on("click", function() {
+    var numOfSongs = $(".player audio").legnth;
+
+    $(".player audio").each(function(index, value) {
+      console.log(index, value);
+
+      if (audio == value) {
+        var newIndex = index;
+
+        if (index == 0) {
+          newIndex = 5;
+        }
+
+        console.log(index, newIndex);
+        changeSong(newIndex - 1);
+        return false;
+      }
     });
-   
-           
+  });
 
-/// all functions
-    
-var playButton = function(){
-      // check for play class
-      if(_button.hasClass("play")){
-          _button.removeClass("play").addClass("pause");
+  /// all functions
 
-          // find length of audio
-          length = audio.duration;
-          // set end time
-          $(player)
-              .find(".timing .end")
-              .text(sToTime(length));
+  var playButton = function() {
+    // check for play class
+    if (_button.hasClass("play")) {
+      _button.removeClass("play").addClass("pause");
 
-          // play the audio
-          console.log("Audio is playing!!!"); 
-          audio.play();
+      // find length of audio
+      length = audio.duration;
+      // set end time
+      $(player)
+        .find(".timing .end")
+        .text(sToTime(length));
 
-          
-          // interval stuff
-          intervalCheck();
+      // play the audio
+      console.log("Audio is playing!!!");
+      audio.play();
 
-          
-      } // end if loop
-      else if(_button.hasClass("pause")){
-          _button.removeClass("pause").addClass("play");
-          clearInterval(interval);
-          audio.pause();
-      } // end else 
+      // interval stuff
+      intervalCheck();
+    } // end if loop
+    else if (_button.hasClass("pause")) {
+      _button.removeClass("pause").addClass("play");
+      clearInterval(interval);
+      audio.pause();
+    } // end else
 
+    updateMusicAnim();
+    // toggle animated album art
+    //$(".track-list li.selected i").toggleClass("animate");
+  }; // end playButton()
 
-      updateMusicAnim();
-      // toggle animated album art
-      //$(".track-list li.selected i").toggleClass("animate");
-    
-    
-};  // end playButton()
-    
-    
-    
-_button.on('click', function(){
+  _button.on("click", function() {
     playButton();
-});
-    
-    
-    
-var intervalCheck = function(){
-    interval = setInterval(function(){
-          console.log("setinterval is running");
-          // update seek bar
-          if(!audio.paused){
-              // while audio is playing
-              updateSeekbarInterval();
-          }
+  });
 
-          //Audio has ended
-          if(audio.ended){
-              clearInterval(interval);
-              _button.removeClass("pause").addClass("play");
-              seekbarInner.width(100+"%");
-              updateMusicAnim();
-          }
+  var intervalCheck = function() {
+    interval = setInterval(function() {
+      console.log("setinterval is running");
+      // update seek bar
+      if (!audio.paused) {
+        // while audio is playing
+        updateSeekbarInterval();
+      }
 
-      }, 250);
-};    
-    
-var updateMusicAnim = function(){
+      //Audio has ended
+      if (audio.ended) {
+        clearInterval(interval);
+        _button.removeClass("pause").addClass("play");
+        seekbarInner.width(100 + "%");
+        updateMusicAnim();
+      }
+    }, 250);
+  };
+
+  var updateMusicAnim = function() {
     $(".track-list li i").removeClass("animate");
-    if (!audio.paused){
-        $(".track-list li.selected i").addClass("animate");
+    if (!audio.paused) {
+      $(".track-list li.selected i").addClass("animate");
     }
-    
-};  
-var updateSeekbarInterval = function(){
+  };
+  var updateSeekbarInterval = function() {
     seekbarPercentage = getPercentage(
-        audio.currentTime.toFixed(2), 
-        length.toFixed(2)
+      audio.currentTime.toFixed(2),
+      length.toFixed(2)
     );
-
 
     // update seekbar percentage
     $(seekbarInner).css("width", seekbarPercentage + "%");
-    $('.seek-bar .seek-handle').css("left", seekbarPercentage + "%");
-
+    $(".seek-bar .seek-handle").css("left", seekbarPercentage + "%");
 
     // update current/start time
-    $(player).find(".timing .start").text(sToTime(audio.currentTime));
-    
-}; // end updateSeekbar1()
+    $(player)
+      .find(".timing .start")
+      .text(sToTime(audio.currentTime));
+  }; // end updateSeekbar1()
 
-//update seekbar   
-var updateSeekbar = function(e){
-    if(/*!audio.ended && */length !== undefined){
-        console.log("this is e: ", e);
+  //update seekbar
+  var updateSeekbar = function(e) {
+    if (/*!audio.ended && */ length !== undefined) {
+      console.log("this is e: ", e);
       var seekPosition = e.pageX - $(seekbarOuter).offset().left;
 
-      if(seekPosition >= 0 && seekPosition <= $(seekbarOuter).width()) {
-            audio.currentTime = (seekPosition * audio.duration)/$(seekbarOuter).width();
+      if (
+        seekPosition >= 0 &&
+        seekPosition <= $(seekbarOuter).width()
+      ) {
+        audio.currentTime =
+          (seekPosition * audio.duration) / $(seekbarOuter).width();
 
+        seekbarPercentage = getPercentage(
+          audio.currentTime.toFixed(2),
+          length.toFixed(2)
+        );
 
-            seekbarPercentage = getPercentage(
-                audio.currentTime.toFixed(2), 
-                length.toFixed(2)
-            );
+        // update seekbar percentage
+        $(seekbarInner).css("width", seekbarPercentage + "%");
+        $(".seek-bar .seek-handle").css(
+          "left",
+          seekbarPercentage + "%"
+        );
 
-
-            // update seekbar percentage
-            $(seekbarInner).css("width", seekbarPercentage + "%");
-            $('.seek-bar .seek-handle').css("left", seekbarPercentage + "%");
-
-
-            // update current/start time
-            $(player).find(".timing .start").text(sToTime(audio.currentTime));
-       }
-    } 
-    
-}; // end updateSeekbar1()
-    
-    
-    
-           
-           
-           
-    
-    
-    // find percentage 
-    var getPercentage = function(presentTime, totalLength){
-        var calcPercentage = (presentTime/totalLength) * 100;
-        return parseFloat(calcPercentage.toString());
-    }
-    
-    
-    
-    $(".track-list li").on("click", function(){
-        
-        var index = $(this).index();
-        
-        if (audio != $(player).find('audio')[index]){
-            changeSong(index);
-        }
-        
-        
-    });
-    
-    
-    
-    // change the song!
-    
-    var changeSong = function(index){
-        
-        // pause current song, if not already paused
-        if(!audio.paused){
-            audio.pause();
-        }
-        
-        // update audio var to correct song, also capture length of new song
-        audio = $('.player').find("audio")[index];
-        length = audio.duration;
-        
-        // update length of song on track
+        // update current/start time
         $(player)
-              .find(".timing .end")
-              .text(sToTime(length));
-        
-        // remove icon next to song, add to correct song via index using eq()
-        $(".track-list li").removeClass("selected");
-        $(".track-list li").eq(index).addClass("selected");
-        // note for future damon: 
-        // eq(): Reduce the set of matched elements to the one at the specified index.
-        // https://api.jquery.com/eq/
-        
-        
-        if(_button.hasClass("play")){
-            _button.removeClass("play").addClass("pause");
-            intervalCheck();
-        }
-        
-        
-        
-        // reset time to beginning
-        audio.currentTime = 0;
-        // set volume to whatever volume bar is set at
-        audio.volume = $('.volume-bar .inner').width() / 100;
-        audio.play();
-        
-        updateMusicAnim();
-        
-        
-        // capture track name from track list using regex, and put it in main player
-        // \D+         <-- capture all nondigit characters...
-        // [^\s\d+]    <-- ... until we find a single space followed by 1 or more digits (track time)
-        var name = $(".track-list li")[index].textContent.match(/\D+[^\s\d+]/)[0];
-        $('.audio-name')[0].textContent = name;
-        
-        
-    }  // end changeSong()
-    
-    
-     
-             
+          .find(".timing .start")
+          .text(sToTime(audio.currentTime));
+      }
+    }
+  }; // end updateSeekbar1()
+
+  // find percentage
+  var getPercentage = function(presentTime, totalLength) {
+    var calcPercentage = (presentTime / totalLength) * 100;
+    return parseFloat(calcPercentage.toString());
+  };
+
+  $(".track-list li").on("click", function() {
+    var index = $(this).index();
+
+    if (audio != $(player).find("audio")[index]) {
+      changeSong(index);
+    }
+  });
+
+  // change the song!
+
+  var changeSong = function(index) {
+    // pause current song, if not already paused
+    if (!audio.paused) {
+      audio.pause();
+    }
+
+    // update audio var to correct song, also capture length of new song
+    audio = $(".player").find("audio")[index];
+    length = audio.duration;
+
+    // update length of song on track
+    $(player)
+      .find(".timing .end")
+      .text(sToTime(length));
+
+    // remove icon next to song, add to correct song via index using eq()
+    $(".track-list li").removeClass("selected");
+    $(".track-list li")
+      .eq(index)
+      .addClass("selected");
+    // note for future damon:
+    // eq(): Reduce the set of matched elements to the one at the specified index.
+    // https://api.jquery.com/eq/
+
+    if (_button.hasClass("play")) {
+      _button.removeClass("play").addClass("pause");
+      intervalCheck();
+    }
+
+    // reset time to beginning
+    audio.currentTime = 0;
+    // set volume to whatever volume bar is set at
+    audio.volume = $(".volume-bar .inner").width() / 100;
+    audio.play();
+
+    updateMusicAnim();
+
+    // capture track name from track list using regex, and put it in main player
+    // \D+         <-- capture all nondigit characters...
+    // [^\s\d+]    <-- ... until we find a single space followed by 1 or more digits (track time)
+    var name = $(".track-list li")[index].textContent.match(
+      /\D+[^\s\d+]/
+    )[0];
+    $(".audio-name")[0].textContent = name;
+  }; // end changeSong()
 }); // end document ready!
 
-
-
-
-
-
-
 function sToTime(t) {
-  return parseInt((t / (60)) % 60) + ":" + 
-         padZero(parseInt((t) % 60));
+  return parseInt((t / 60) % 60) + ":" + padZero(parseInt(t % 60));
 }
 function padZero(v) {
-  return (v < 10) ? "0" + v : v;
+  return v < 10 ? "0" + v : v;
 }
+
 // !
 // particles.js initiation located at end of vendor/particles.js
 

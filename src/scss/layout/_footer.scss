@@ -1,58 +1,62 @@
-
 footer {
-    //background: $puggsy-sky;
-    //background: linear-gradient(to top, $puggsy-sky, $puggsy-sky-darken);
-    background: linear-gradient(to bottom, $dusk-top, $dusk-bottom);
+  //background: $puggsy-sky;
+  //background: linear-gradient(to top, $puggsy-sky, $puggsy-sky-darken);
+  background: linear-gradient(to bottom, $dusk-top, $dusk-bottom);
+  color: $text-inverse;
+  //padding: 15em 0;
+  height: 35em; // no padding, since footerAnim.js doesnt calculate padding and stuff
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    right: 30px;
+    left: 30px;
+    //background: url(../img/logo.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.05;
+    //padding: 30px;
+  }
+
+  a {
     color: $text-inverse;
-    //padding: 15em 0;
-    height: 35em; // no padding, since footerAnim.js doesnt calculate padding and stuff
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 30px;
-        bottom: 30px;
-        right: 30px;
-        left: 30px;
-        //background: url(../img/logo.svg);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        opacity: 0.05;
-        //padding: 30px;
-    }
-    
-    a {
-        color: $text-inverse;
-    }
+  }
 }
 
 .social-links {
-    display: flex;
-    font-size: 3rem;
-    justify-content: space-around;
-    opacity: 0.8;
-    margin: .7em 0;
+  display: flex;
+  font-size: 3rem;
+  justify-content: space-around;
+  opacity: 0.8;
+  margin: 0.7em 0;
 }
 
 .nav-footer {
-    display: flex;
-    justify-content: space-around;
-    //width: 80%;
-    margin: 0 auto;
-    
-    a {
-        text-decoration: none;
-        font-weight: $font-bold;
-    }
-    
+  display: flex;
+  justify-content: space-around;
+  //width: 80%;
+  margin: 0 auto;
+
+  a {
+    text-decoration: none;
+    font-weight: $font-bold;
+  }
 }
 
 .container--footer {
-    max-width: 25em;
+  max-width: 25em;
+}
+
+.footer-button-container {
+  display: none;
+  z-index: 100;
+  margin-bottom: 60px;
 }
