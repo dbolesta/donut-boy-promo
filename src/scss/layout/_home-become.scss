@@ -1,7 +1,7 @@
 .become {
   padding: 10vh 0 48px;
   position: relative;
-  background: url("imgs/tile1.png") repeat;
+  background: url("../imgs/tile1.png") repeat;
   align-items: flex-end;
   z-index: -2; // this is so donut lines can appear behind dough nutter machine, but above this base section
 
@@ -11,7 +11,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("/imgs/tile2.png") repeat-x left bottom;
+    background: url("../imgs/tile2.png") repeat-x left bottom;
   }
 
   .grid {
@@ -29,7 +29,7 @@
   }
 
   .nut-line {
-    background: url("/imgs/donutLine.png") repeat-y;
+    background: url("../imgs/donutLine.png") repeat-y;
     height: 445px;
     width: 70px;
 
