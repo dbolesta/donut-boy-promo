@@ -1012,9 +1012,12 @@ h2 {
         height: 150px;
         width: 150px;
         margin-right: 15px; }
+        @media (min-width: 725px) {
+          .assets .asset-display .asset-info .asset-image {
+            width: 135px; } }
       .assets .asset-display .asset-info .asset-text {
         height: 150px;
-        width: 110px;
+        width: 125px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -1026,6 +1029,9 @@ h2 {
         -ms-flex-pack: left;
         justify-content: left;
         text-shadow: -1px -1px 0 black, 0 -1px 0 black, 1px -1px 0 black, 1px 0 0 black, 1px 1px 0 black, 0 1px 0 black, -1px 1px 0 black, -1px 0 0 black; }
+        @media (min-width: 725px) {
+          .assets .asset-display .asset-info .asset-text {
+            width: 135px; } }
         .assets .asset-display .asset-info .asset-text h2 {
           font-family: "Press Start 2P";
           font-size: 1em; }
@@ -1633,7 +1639,7 @@ footer {
 
 .beach-gull {
   position: absolute;
-  bottom: -100px;
+  bottom: -125px;
   left: 12%;
   -webkit-animation: gullFly 7s linear infinite;
   animation: gullFly 7s linear infinite; }
@@ -1688,8 +1694,8 @@ footer {
   transform: scaleX(-1); }
 
 .animated-db {
-  -webkit-animation-duration: .4s;
-  animation-duration: .4s;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-timing-function: cubic-bezier(0.31, 0.44, 0.445, 1.65);
@@ -1698,8 +1704,8 @@ footer {
   animation-iteration-count: infinite; }
 
 .animated-kelly {
-  -webkit-animation-duration: .37s;
-  animation-duration: .37s;
+  -webkit-animation-duration: 0.37s;
+  animation-duration: 0.37s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-timing-function: cubic-bezier(0.31, 0.44, 0.445, 1.65);
@@ -1708,7 +1714,8 @@ footer {
   animation-iteration-count: infinite; }
 
 @-webkit-keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     -webkit-transform: translateY(0);
     transform: translateY(0); }
   50% {
@@ -1716,7 +1723,8 @@ footer {
     transform: translateY(-10px); } }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     -webkit-transform: translateY(0);
     transform: translateY(0); }
   50% {
