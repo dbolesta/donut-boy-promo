@@ -121,9 +121,9 @@ function removeTravelImage(e) {
 
 // called when `transitionend` event fires on DOM.travel to update to new image
 function replaceTravelImage(img) {
-  DOM.travel.style.backgroundImage = `url(./imgs/${travelImg})`;
+  DOM.travel.style.backgroundImage = "url(./imgs/" + img + ")";
   DOM.travel.classList.add("selected-image");
-  console.log(`url(../imgs/${travelImg})`);
+  console.log(`url(./imgs/${travelImg})`);
 }
 
 // update position of damon to get closer to kelly in relation with screen scroll percentage
