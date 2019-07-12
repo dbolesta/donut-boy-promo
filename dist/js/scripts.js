@@ -575,7 +575,7 @@ function removeTravelImage(e) {
 
 // called when `transitionend` event fires on DOM.travel to update to new image
 function replaceTravelImage(img) {
-  DOM.travel.style.backgroundImage = `url(/imgs/${travelImg})`;
+  DOM.travel.style.backgroundImage = `url(../imgs/${travelImg})`;
   DOM.travel.classList.add("selected-image");
   console.log(`url(../imgs/${travelImg})`);
 }
