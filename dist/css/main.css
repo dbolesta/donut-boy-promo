@@ -816,7 +816,7 @@ h2 {
 .become {
   padding: 10vh 0 48px;
   position: relative;
-  background: url("imgs/tile1.png") repeat;
+  background: url("../imgs/tile1.png") repeat;
   -webkit-box-align: end;
   -ms-flex-align: end;
   align-items: flex-end;
@@ -827,7 +827,7 @@ h2 {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("/imgs/tile2.png") repeat-x left bottom; }
+    background: url("../imgs/tile2.png") repeat-x left bottom; }
   .become .grid {
     -webkit-box-align: end;
     -ms-flex-align: end;
@@ -845,7 +845,7 @@ h2 {
     justify-content: center;
     z-index: -1; }
   .become .nut-line {
-    background: url("/imgs/donutLine.png") repeat-y;
+    background: url("../imgs/donutLine.png") repeat-y;
     height: 445px;
     width: 70px; }
     .become .nut-line.nut-1 {
