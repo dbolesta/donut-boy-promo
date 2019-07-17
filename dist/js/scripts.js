@@ -553,6 +553,16 @@ function bindEvents() {
 cacheDOM();
 bindEvents();
 
+// preload background images for travel section
+[
+  "Bakery.png",
+  "Fish2.png",
+  "Basement.png",
+  "StatenIsland.png"
+].forEach(function(img) {
+  new Image().src = "./imgs/level" + img;
+});
+
 // set up initial positions for damon and kelly real quick
 DOM.donutBoyFooter.style.left =
   document.body.clientWidth * 0.05 + "px";
