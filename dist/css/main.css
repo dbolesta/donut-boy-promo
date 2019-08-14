@@ -814,7 +814,7 @@ h2 {
         background: #FECE4F; }
 
 .become {
-  padding: 10vh 0 48px;
+  padding-bottom: 48px;
   position: relative;
   background: url("../imgs/tile1.png") repeat;
   -webkit-box-align: end;
@@ -843,7 +843,8 @@ h2 {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    z-index: -1; }
+    z-index: -1;
+    margin-top: -50px; }
   .become .nut-line {
     background: url("../imgs/donutLine.png") repeat-y;
     height: 445px;
@@ -855,7 +856,6 @@ h2 {
       right: -21px;
       height: 440px;
       bottom: -5px;
-      border-top-left-radius: 20px;
       -webkit-animation: slide 1s linear infinite;
       animation: slide 1s linear infinite; }
     .become .nut-line.nut-2 {
@@ -868,12 +868,11 @@ h2 {
       left: -21px;
       height: 440px;
       bottom: -5px;
-      border-top-right-radius: 20px;
       -webkit-animation: slide3 1s linear infinite;
       animation: slide3 1s linear infinite; }
   .become .become-text {
-    -ms-flex-item-align: start;
-    align-self: flex-start;
+    -ms-flex-item-align: center;
+    align-self: center;
     color: white;
     position: absolute;
     left: 0;

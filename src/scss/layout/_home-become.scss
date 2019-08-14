@@ -1,7 +1,8 @@
 .become {
-  padding: 10vh 0 48px;
+  // padding: 10vh 0 48px;
+  padding-bottom: 48px;
   position: relative;
-  background: url("../imgs/tile1.png") repeat;
+  background: url('../imgs/tile1.png') repeat;
   align-items: flex-end;
   z-index: -2; // this is so donut lines can appear behind dough nutter machine, but above this base section
 
@@ -11,7 +12,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("../imgs/tile2.png") repeat-x left bottom;
+    background: url('../imgs/tile2.png') repeat-x left bottom;
   }
 
   .grid {
@@ -26,10 +27,11 @@
     bottom: -24px;
     justify-content: center;
     z-index: -1; // so they appear behind machine
+    margin-top: -50px; // so the donuts go behind the div above
   }
 
   .nut-line {
-    background: url("../imgs/donutLine.png") repeat-y;
+    background: url('../imgs/donutLine.png') repeat-y;
     height: 445px;
     width: 70px;
 
@@ -39,7 +41,7 @@
       right: -21px;
       height: 440px;
       bottom: -5px;
-      border-top-left-radius: 20px;
+      // border-top-left-radius: 20px;
       animation: slide 1s linear infinite;
     }
 
@@ -53,15 +55,16 @@
       left: -21px;
       height: 440px;
       bottom: -5px;
-      border-top-right-radius: 20px;
+      // border-top-right-radius: 20px;
       animation: slide3 1s linear infinite;
     }
   }
 
   .become-text {
-    align-self: flex-start;
+    align-self: center;
     color: white;
     position: absolute;
+
     left: 0;
     right: 0;
 
