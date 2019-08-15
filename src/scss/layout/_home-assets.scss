@@ -1,6 +1,6 @@
 .assets {
   //background: $dark;
-  background: url("../imgs/tile4.png") repeat;
+  background: url('../imgs/tile4.png') repeat;
   color: $text-inverse;
   padding: 3em 0;
   position: relative;
@@ -9,11 +9,13 @@
     position: absolute;
     top: 0;
     left: 0;
-  }
-  .pipe-details-inverse {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+
+    &-inverse {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: scale(-1, -1);
+    }
   }
 
   .col {
@@ -69,7 +71,7 @@
             text-indent: -0.8em; // to combat fake li margin
 
             &:before {
-              content: "•";
+              content: '•';
               margin-right: 0.5em;
             }
             &:first-child {

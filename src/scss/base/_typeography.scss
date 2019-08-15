@@ -1,107 +1,123 @@
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0 0 .75em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 0 0.75em;
 }
 
-h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child {
-    margin: 0;
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child,
+p:last-child {
+  margin: 0;
 }
 
 h1 {
-    font-size: 2rem;
-    font-weight: $font-light; 
-    line-height: 1.15;
-    text-transform: uppercase;
-    letter-spacing: 4px;
+  font-size: 2rem;
+  font-weight: $font-light;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
 h2 {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    line-height: 1;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 1;
 }
-
 
 .title-large {
-    font-size: 3rem;
-    font-weight: $font-black;
-    line-height: .9;
-    
-    span {
-        font-weight: $font-light;
-    }
+  font-size: 3rem;
+  font-weight: $font-black;
+  line-height: 0.9;
+
+  span {
+    font-weight: $font-light;
+  }
 }
 
-
 .title-box {
-    background: $accent;
-    color: $text-inverse;
-    margin: 0 auto;
-    padding: 2em;
-    transform: translateY(30%);
-    max-width: 75%;
-    /*@media (min-width: 495px){
+  background: $accent;
+  color: $text-inverse;
+  margin: 0 auto;
+  padding: 2em;
+  transform: translateY(30%);
+  max-width: 75%;
+  /*@media (min-width: 495px){
         transform: translateY(50%);
     }*/
-    
-    
-    & + .bg-primary {
-        padding-top: 6em;
-        @media(min-width: 495px){
-            padding-top: 8em;
-        }
+
+  & + .bg-primary {
+    padding-top: 6em;
+    @media (min-width: 495px) {
+      padding-top: 8em;
     }
-    
-    @include respond-to(small){
-        max-width: 700px;
-    }
-    
+  }
+
+  @include respond-to(small) {
+    max-width: 700px;
+  }
 }
 
 .title-footer {
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    line-height: 1;
-    
-    &::before, &::after {
-        content: '';
-        display: block;
-        height: 1px;
-        background: $text-inverse;
-        opacity: 0.25;
-        margin: .75em 0;
-    }
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: $text-inverse;
+    opacity: 0.25;
+    margin: 0.75em 0;
+  }
 }
 
 .text-intro {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
-
-
 
 .important-title {
-    font-family: $font-vg1;
-    @include stroke;
-    color: $white;
-    padding-bottom: 2em;
+  font-family: $font-vg1;
+  @include stroke;
+  color: $white;
+  padding-bottom: 2em;
 }
-
-
 
 .title-asset {
-    font-family: $font-vg2;
-    font-size: 1.2em;
-    @include stroke(black, 1px);
-    color: $white;
-    padding-bottom: 1em;
+  font-family: $font-vg2;
+  font-size: 1.2em;
+  @include stroke(black, 1px);
+  color: $white;
+  padding-bottom: 1em;
 }
-
 
 // might be obsolete?
 .section-title {
-    font-family: $font-vg1;
-    @include stroke(black, 1px);
-    letter-spacing: 1px;
-    font-size: 2.5rem;
-    color: white;
+  font-family: $font-vg1;
+  @include stroke(black, 1px);
+  letter-spacing: 1px;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  @include stroke(black, 1px);
+  line-height: 1.5rem;
+}
+.music-subtitle {
+  font-size: 1.5rem;
+  @include stroke(black, 1px);
+  line-height: 2rem;
+  padding-bottom: 1rem;
 }
