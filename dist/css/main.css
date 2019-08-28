@@ -774,6 +774,8 @@ h2 {
     opacity: 1; }
   .travel .section-title {
     padding-top: 5vh; }
+  .travel .section-subtitle {
+    color: white; }
   .travel .travel-menu ul {
     list-style-type: none;
     display: -webkit-box;
