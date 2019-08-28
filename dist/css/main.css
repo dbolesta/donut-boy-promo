@@ -1304,8 +1304,9 @@ h2 {
             color: black; }
             .player-container .player .info .volume-and-timing .volume-control .wrapper i {
               margin-right: 1rem; }
-            .player-container .player .info .volume-and-timing .volume-control .wrapper:hover i.fa {
-              color: #b6b8b0; }
+            .player-container .player .info .volume-and-timing .volume-control .wrapper:hover i.volume-icon {
+              color: #b6b8b0;
+              cursor: pointer; }
             .player-container .player .info .volume-and-timing .volume-control .wrapper .volume-bar {
               position: relative;
               width: 100%; }

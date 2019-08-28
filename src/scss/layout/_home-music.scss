@@ -157,8 +157,9 @@
                         }
 
                         &:hover {
-                            i.fa {
+                            i.volume-icon {
                                 color: lighten($playerColor, 50%);
+                                cursor: pointer;
                             }
                         }
                         
