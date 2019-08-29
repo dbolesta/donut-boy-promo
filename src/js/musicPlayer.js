@@ -17,8 +17,8 @@ $(document).ready(function() {
   var muteVolume; // used to remember where volume was before muting
   var mutePosition; // same but for volume handle and inner bar
 
-  var volumePosition; // position of volume handle & inner bar
-  var audioVolume; // volume of audio
+  var volumePosition = 100; // position of volume handle & inner bar
+  var audioVolume = 1; // volume of audio // default values in case mute without changing first
 
   var seekDrag = false; // for dragging seek position
   var volumeDrag = false;
